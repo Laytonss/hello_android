@@ -8,7 +8,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.marginTop
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,9 +24,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun addButtons() {
         val linearLayout = findViewById<LinearLayout>(R.id.linearLayoutForButtons)
-        for(i in 1..20) {
+        for (i in 1..14) {
             val button = Button(this)
-            button.text = "button $i"
+            button.text = resources.getString(resources.getIdentifier("button$i", "string", packageName))
             val layoutParams = LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
