@@ -32,19 +32,23 @@ class MainActivity : AppCompatActivity() {
             // button.text = resources.getString(R.array.buttons + i) 不知道为啥报错
             //button.text = resources.getStringArray(R.array.buttons)[i] 不应该用数组，item一多难道要一行行敲吗
             button.text = String.format(resources.getString(R.string.button_text), i)
-            val layoutParams = LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT
-            )
-            layoutParams.topMargin = 16
-            layoutParams.width = 650
-            button.layoutParams = layoutParams
+            addStyleForButton(button)
             if (i == 5) {
                 addJumpToRelativeLayoutEvent(button)
                 button.text = resources.getString(R.string.relative_button_name)
             }
             linearLayout.addView(button)
         }
+    }
+
+    private fun addStyleForButton(button: Button) {
+        val layoutParams = LinearLayout.LayoutParams(
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        layoutParams.topMargin = 16
+        layoutParams.width = 650
+        button.layoutParams = layoutParams
     }
 
     private fun addJumpToRelativeLayoutEvent(button: Button) {
