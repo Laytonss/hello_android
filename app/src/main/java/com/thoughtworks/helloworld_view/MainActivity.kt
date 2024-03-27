@@ -38,7 +38,8 @@ class MainActivity : AppCompatActivity() {
             layoutParams.topMargin = 16
             layoutParams.width = 650
             button.layoutParams = layoutParams
-            if(i == 1) {
+            if (i == 1) {
+                button.text = resources.getString(R.string.constraint_layout_button)
                 addJumpToConstraintLayoutEvent(button)
             }
             linearLayout.addView(button)
