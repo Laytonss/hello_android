@@ -36,7 +36,17 @@ class MainActivity : AppCompatActivity() {
                 button.text = resources.getString(R.string.constraint_layout_button)
                 addJumpToConstraintLayoutEvent(button)
             }
+            if (i == 2) {
+                button.text = resources.getString(R.string.login_button)
+                addJumpToLoginEvent(button)
+            }
             linearLayout.addView(button)
+        }
+    }
+
+    private fun addJumpToLoginEvent(button: Button) {
+        button.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
         }
     }
 
