@@ -8,4 +8,8 @@
     <string name="right_text">右</string>
     <string name="above_text">上</string>
     <string name="below_text">下</string>
+    <string name="top_text">相对布局</string>
+    <string name="hint_text_1">UI设计师</string>
+    <string name="hint_text_2">程序员</string>
+    <string name="title1">程序员鼓励师</string>
 </resources>

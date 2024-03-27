@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Square_Button">
-        <item name="android:layout_width">90dp</item>
-        <item name="android:layout_height">90dp</item>
+    <style name="Base_Button">
         <item name="android:textSize">20sp</item>
         <item name="android:background">@drawable/shape</item>
+    </style>
+    <style name="Square_Button_90dp" parent="Base_Button">
+        <item name="android:layout_width">90dp</item>
+        <item name="android:layout_height">90dp</item>
     </style>
 </resources>
