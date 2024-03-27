@@ -25,29 +25,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun addButtons() {
         val linearLayout = findViewById<LinearLayout>(R.id.linearLayoutForButtons)
+        val buttons = ArrayList<Button>()
         for (i in 1..14) {
             val button = Button(this)
-            // button.text = resources.getString(resources.getIdentifier("button$i", "string", packageName)) 反射低效且不安全
-            // button.text = resources.getString(R.array.buttons + i) 不知道为啥报错
-            //button.text = resources.getStringArray(R.array.buttons)[i] 不应该用数组，item一多难道要一行行敲吗
             button.text = String.format(resources.getString(R.string.button_text), i)
             addStyleForButton(button)
-            if (i == 1) {
-                button.text = resources.getString(R.string.constraint_layout_button)
-                addJumpToConstraintLayoutEvent(button)
-            }
-            if (i == 2) {
-                button.text = resources.getString(R.string.login_button)
-                addJumpToLoginEvent(button)
-            }
-            linearLayout.addView(button)
+            buttons.add(button)
         }
-    }
-
-    private fun addJumpToLoginEvent(button: Button) {
-        button.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
-        }
+        modifyConstraintButton(buttons[1])
+        modifyLoginButton(buttons[2])
+        buttons.forEach { linearLayout.addView(it) }
     }
 
     private fun addStyleForButton(button: Button) {
@@ -60,7 +47,15 @@ class MainActivity : AppCompatActivity() {
         button.layoutParams = layoutParams
     }
 
-    private fun addJumpToConstraintLayoutEvent(button: Button) {
+    private fun modifyLoginButton(button: Button) {
+        button.text = resources.getString(R.string.login_button)
+        button.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
+    }
+
+    private fun modifyConstraintButton(button: Button) {
+        button.text = resources.getString(R.string.constraint_layout_button)
         button.setOnClickListener {
             startActivity(Intent(this, ConstraintActivity::class.java))
         }
