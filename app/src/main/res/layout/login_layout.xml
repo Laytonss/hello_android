@@ -127,5 +127,5 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/faceBookPic" />
-
+    <!--不知道为什么这个background没有生效，先去吃饭了，感谢coach review-->
 </androidx.constraintlayout.widget.ConstraintLayout>
