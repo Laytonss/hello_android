@@ -26,7 +26,10 @@ class MainActivity : AppCompatActivity() {
         val linearLayout = findViewById<LinearLayout>(R.id.linearLayoutForButtons)
         for (i in 1..14) {
             val button = Button(this)
-            button.text = resources.getString(resources.getIdentifier("button$i", "string", packageName))
+            // button.text = resources.getString(resources.getIdentifier("button$i", "string", packageName)) 反射低效且不安全
+            // button.text = resources.getString(R.array.buttons + i) 不知道为啥报错
+            //button.text = resources.getStringArray(R.array.buttons)[i] 不应该用数组，item一多难道要一行行敲吗
+            button.text = String.format(resources.getString(R.string.button_text), i)
             val layoutParams = LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT
