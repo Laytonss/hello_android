@@ -14,19 +14,19 @@
 
     <Button
         android:id="@+id/title1"
-        style="@style/Base_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/wrap_Content_Button"
         android:layout_below="@id/top_title"
         android:layout_alignEnd="@id/title1"
         android:layout_alignParentStart="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp"
         android:text="@string/hint_text_2" />
 
     <Button
-        style="@style/Base_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/wrap_Content_Button"
         android:layout_below="@id/top_title"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp"
         android:layout_toEndOf="@id/title1"
         android:text="@string/title1" />
 
@@ -62,20 +62,20 @@
         android:text="@string/below_text" />
 
     <Button
-        style="@style/Base_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/wrap_Content_Button"
         android:layout_alignParentBottom="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="50dp"
         android:layout_toStartOf="@id/hint2"
         android:gravity="start"
         android:text="@string/hint_text_1" />
 
     <Button
         android:id="@+id/hint2"
-        style="@style/Base_Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/wrap_Content_Button"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="50dp"
         android:text="@string/hint_text_2" />
 </RelativeLayout>

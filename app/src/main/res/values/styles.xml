@@ -4,8 +4,13 @@
         <item name="android:textSize">20sp</item>
         <item name="android:background">@drawable/shape</item>
     </style>
+    <style name="wrap_Content_Button" parent="Base_Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
     <style name="Square_Button_90dp" parent="Base_Button">
         <item name="android:layout_width">90dp</item>
         <item name="android:layout_height">90dp</item>
+        <item name="android:layout_margin">10dp</item>
     </style>
 </resources>
