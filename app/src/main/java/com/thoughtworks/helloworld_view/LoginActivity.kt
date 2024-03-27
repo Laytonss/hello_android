@@ -1,12 +1,16 @@
 package com.thoughtworks.helloworld_view
 
 import android.os.Bundle
+import android.view.View
+import android.view.WindowInsetsController
 import androidx.appcompat.app.AppCompatActivity
+
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login_layout)
         supportActionBar?.hide()
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
     }
 }
