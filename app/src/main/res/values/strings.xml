@@ -3,4 +3,8 @@
     <string name="android_practice">Android practice</string>
     <string name="button_text">button %d</string>
     <string name="constraint_layout_button">constraint_layout</string>
+    <string name="hello_text">Hello!</string>
+    <string name="github_picture">github Picture</string>
+    <string name="signup">Signup</string>
+    <string name="login">Login</string>
 </resources>
