@@ -6,6 +6,12 @@
     <string name="login_button">login</string>
     <string name="hello_text">Hello!</string>
     <string name="github_picture">github Picture</string>
+    <string name="title_Description">title</string>
     <string name="signup">Signup</string>
     <string name="login">Login</string>
+    <string name="UsernamePlaceHolder">Username</string>
+    <string name="PassWordPlaceHolder">Password</string>
+    <string name="CheckBoxHint">Remember me</string>
+    <string name="ForgotPassword">Fogot password?</string>
+    <string name="LoginButtonText">Login</string>
 </resources>
