@@ -56,7 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="22.5dp"
-        android:layout_marginRight="37.5dp"
+        android:layout_marginEnd="37.5dp"
         android:text="@string/CheckBoxHint"
         android:textColor="@color/frontColor"
         android:textSize="12sp"
@@ -74,14 +74,58 @@
         app:layout_constraintEnd_toEndOf="@id/passWord" />
 
     <Button
+        android:id="@+id/loginButton"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="@string/LoginButtonText"
         android:layout_marginTop="22.5dp"
         android:backgroundTint="@color/loginButtonColor"
+        android:text="@string/LoginButtonText"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/forgotPassword" />
+
+    <TextView
+        android:id="@+id/connectWith"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26.5dp"
+        android:text="@string/connectWithHint"
+        android:textColor="@color/connectWithColor"
+        android:textSize="12sp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/loginButton" />
+
+    <ImageView
+        android:id="@+id/faceBookPic"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="29.5dp"
+        android:contentDescription="@string/github_picture"
+        android:src="@drawable/facebook_logo"
+        app:layout_constraintStart_toStartOf="@id/passWord"
+        app:layout_constraintTop_toBottomOf="@id/connectWith" />
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="29.5dp"
+        android:contentDescription="@string/github_picture"
+        android:src="@drawable/twitter_logo"
+        app:layout_constraintEnd_toEndOf="@id/passWord"
+        app:layout_constraintTop_toBottomOf="@id/connectWith" />
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/tmp"
+        android:text="@string/emailText"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/faceBookPic" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

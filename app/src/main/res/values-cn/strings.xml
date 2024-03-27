@@ -14,4 +14,6 @@
     <string name="CheckBoxHint">Remember me</string>
     <string name="ForgotPassword">Fogot password?</string>
     <string name="LoginButtonText">Login</string>
+    <string name="connectWithHint">or connect with</string>
+    <string name="emailText">Sign Up with E-mail</string>
 </resources>

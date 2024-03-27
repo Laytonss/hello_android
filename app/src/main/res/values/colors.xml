@@ -6,4 +6,6 @@
     <color name="borderColor">#e1e1e1</color>
     <color name="frontColor">#222222</color>
     <color name="loginButtonColor">#1f4ba5</color>
+    <color name="connectWithColor">#b2b2b2</color>
+    <color name="signWithEmailColor">#1f4ba5</color>
 </resources>
