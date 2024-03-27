@@ -1,5 +1,6 @@
 package com.thoughtworks.helloworld_view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.ViewGroup
 import android.widget.Button
@@ -8,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,7 +39,16 @@ class MainActivity : AppCompatActivity() {
             layoutParams.topMargin = 16
             layoutParams.width = 650
             button.layoutParams = layoutParams
+            if (i == 5) {
+                addJumpToRelativeLayoutEvent(button)
+            }
             linearLayout.addView(button)
+        }
+    }
+
+    private fun addJumpToRelativeLayoutEvent(button: Button) {
+        button.setOnClickListener {
+            startActivity(Intent(this, RelativeActivity::class.java))
         }
     }
 }
