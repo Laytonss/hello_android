@@ -7,30 +7,30 @@
         android:id="@+id/center"
         style="@style/Square_Button"
         android:layout_centerInParent="true"
-        android:text="中" />
+        android:text="@string/center_text" />
 
     <Button
         style="@style/Square_Button"
         android:layout_centerVertical="true"
         android:layout_toStartOf="@id/center"
-        android:text="左" />
+        android:text="@string/left_text" />
 
     <Button
         style="@style/Square_Button"
         android:layout_centerVertical="true"
         android:layout_toEndOf="@id/center"
-        android:text="右"
+        android:text="@string/right_text"
         android:textSize="20sp" />
 
     <Button
         style="@style/Square_Button"
         android:layout_above="@id/center"
         android:layout_centerHorizontal="true"
-        android:text="上" />
+        android:text="@string/above_text" />
 
     <Button
         style="@style/Square_Button"
         android:layout_below="@id/center"
         android:layout_centerHorizontal="true"
-        android:text="下" />
+        android:text="@string/below_text" />
 </RelativeLayout>

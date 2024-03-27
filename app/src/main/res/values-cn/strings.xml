@@ -3,4 +3,9 @@
     <string name="android_practice">Android 练习</string>
     <string name="button_text">按钮 %d</string>
     <string name="relative_button_name">relative_layout</string>
+    <string name="center_text">中</string>
+    <string name="left_text">左</string>
+    <string name="right_text">右</string>
+    <string name="above_text">上</string>
+    <string name="below_text">下</string>
 </resources>
