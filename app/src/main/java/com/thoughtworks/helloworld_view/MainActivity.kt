@@ -1,5 +1,6 @@
 package com.thoughtworks.helloworld_view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.ViewGroup
 import android.widget.Button
@@ -37,7 +38,16 @@ class MainActivity : AppCompatActivity() {
             layoutParams.topMargin = 16
             layoutParams.width = 650
             button.layoutParams = layoutParams
+            if(i == 1) {
+                addJumpToConstraintLayoutEvent(button)
+            }
             linearLayout.addView(button)
+        }
+    }
+
+    private fun addJumpToConstraintLayoutEvent(button: Button) {
+        button.setOnClickListener {
+            startActivity(Intent(this, ConstraintActivity::class.java))
         }
     }
 }
