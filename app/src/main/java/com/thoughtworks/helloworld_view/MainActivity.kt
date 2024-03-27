@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
             button.layoutParams = layoutParams
             if (i == 5) {
                 addJumpToRelativeLayoutEvent(button)
+                button.text = resources.getString(R.string.relative_button_name)
             }
             linearLayout.addView(button)
         }
