@@ -11,6 +11,8 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContract
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -73,42 +75,69 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("Range")
     private fun modifyPickButton(button: Button) {
         button.text = resources.getString(R.string.pick_button)
-        button.setOnClickListener {
-            val intent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
-            startActivityForResult(intent, REQUEST_CODE_PICK_CONTACT)
-        }
-    }
-
-    @SuppressLint("Range")
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_CODE_PICK_CONTACT && resultCode == RESULT_OK) {
-            val contactUri = data?.data ?: return
-            val cursor = contentResolver.query(contactUri, null, null, null, null)
-            cursor?.use {
-                if (it.moveToFirst()) {
-                    val name = it.getString(it.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME))
-                    val hasPhoneNumber = it.getString(it.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER))
-                    if (Integer.parseInt(hasPhoneNumber) > 0) {
-                        val id = it.getString(it.getColumnIndex(ContactsContract.Contacts._ID))
-                        val phonesCursor = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + id, null, null)
-                        val numbers = mutableSetOf<String>()
-                        phonesCursor?.use {
-                            while (phonesCursor.moveToNext()) {
-                                val phoneNumber = phonesCursor.getString(phonesCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)).replace("-", "").replace(" ", "")
-                                numbers.add(phoneNumber)
+        val registerForActivityResult = registerForActivityResult(ActivityResultContracts.PickContact()) { contactUri ->
+            if (contactUri != null) {
+                // Get contact information
+                val cursor = contentResolver.query(contactUri, null, null, null, null)
+                cursor?.use {
+                    if (it.moveToFirst()) {
+                        val name = it.getString(it.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME))
+                        val hasPhoneNumber = it.getString(it.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER))
+                        if (Integer.parseInt(hasPhoneNumber) > 0) {
+                            val id = it.getString(it.getColumnIndex(ContactsContract.Contacts._ID))
+                            val phonesCursor =
+                                contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + id, null, null)
+                            val numbers = mutableSetOf<String>()
+                            phonesCursor?.use {
+                                while (phonesCursor.moveToNext()) {
+                                    val phoneNumber = phonesCursor.getString(phonesCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)).replace("-", "").replace(" ", "")
+                                    numbers.add(phoneNumber)
+                                }
+                                Toast.makeText(this, "$name $numbers", Toast.LENGTH_LONG).show()
                             }
-                            Toast.makeText(this@MainActivity, "$name $numbers", Toast.LENGTH_LONG).show()
+                        } else {
+                            Toast.makeText(this, "$name - No numbers", Toast.LENGTH_LONG).show()
                         }
-                    } else {
-                        Toast.makeText(this@MainActivity, "$name - No numbers", Toast.LENGTH_LONG).show()
                     }
                 }
             }
         }
+        button.setOnClickListener {
+            registerForActivityResult.launch(null)
+        }
     }
+
+    //老的api
+//    @SuppressLint("Range")
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        if (requestCode == REQUEST_CODE_PICK_CONTACT && resultCode == RESULT_OK) {
+//            val contactUri = data?.data ?: return
+//            val cursor = contentResolver.query(contactUri, null, null, null, null)
+//            cursor?.use {
+//                if (it.moveToFirst()) {
+//                    val name = it.getString(it.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME))
+//                    val hasPhoneNumber = it.getString(it.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER))
+//                    if (Integer.parseInt(hasPhoneNumber) > 0) {
+//                        val id = it.getString(it.getColumnIndex(ContactsContract.Contacts._ID))
+//                        val phonesCursor = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + id, null, null)
+//                        val numbers = mutableSetOf<String>()
+//                        phonesCursor?.use {
+//                            while (phonesCursor.moveToNext()) {
+//                                val phoneNumber = phonesCursor.getString(phonesCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)).replace("-", "").replace(" ", "")
+//                                numbers.add(phoneNumber)
+//                            }
+//                            Toast.makeText(this@MainActivity, "$name $numbers", Toast.LENGTH_LONG).show()
+//                        }
+//                    } else {
+//                        Toast.makeText(this@MainActivity, "$name - No numbers", Toast.LENGTH_LONG).show()
+//                    }
+//                }
+//            }
+//        }
+//    }
 }
 
-// dimens.xml
