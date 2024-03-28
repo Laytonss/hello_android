@@ -82,26 +82,24 @@ class MainActivity : AppCompatActivity() {
             if (contactUri != null) {
                 // Get contact information
                 val cursor = contentResolver.query(contactUri, null, null, null, null)
-                cursor?.use {
-                    if (it.moveToFirst()) {
-                        val name = it.getString(it.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME))
-                        val hasPhoneNumber = it.getString(it.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER))
-                        if (Integer.parseInt(hasPhoneNumber) > 0) {
-                            val id = it.getString(it.getColumnIndex(ContactsContract.Contacts._ID))
-                            val phonesCursor =
-                                contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + id, null, null)
-                            val numbers = mutableSetOf<String>()
-                            phonesCursor?.use {
-                                while (phonesCursor.moveToNext()) {
-                                    val phoneNumber = phonesCursor.getString(phonesCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)).replace("-", "").replace(" ", "")
-                                    numbers.add(phoneNumber)
-                                }
-                                Toast.makeText(this, "$name $numbers", Toast.LENGTH_LONG).show()
+                if (cursor != null && cursor.moveToFirst()) {
+                    val name = cursor.getString(cursor.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME))
+                    val hasPhoneNumber = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER))
+                    val numbers = mutableSetOf<String>()
+                    if (Integer.parseInt(hasPhoneNumber) > 0) {
+                        val id = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID))
+                        val phonesCursor =
+                            contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + id, null, null)
+                        phonesCursor?.use {
+                            while (phonesCursor.moveToNext()) {
+                                val phoneNumber = phonesCursor.getString(phonesCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)).replace("-", "").replace(" ", "")
+                                numbers.add(phoneNumber)
                             }
-                        } else {
-                            Toast.makeText(this, "$name - No numbers", Toast.LENGTH_LONG).show()
                         }
                     }
+                    if (numbers.size == 0) numbers.add("No numbers for this contract")
+                    Toast.makeText(this, "$name $numbers", Toast.LENGTH_LONG).show()
+                    cursor.close()
                 }
             }
         }
