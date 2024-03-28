@@ -2,13 +2,17 @@ package com.thoughtworks.helloworld_view
 
 import android.content.Intent
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+
+const val REQUEST_CODE_PICK_CONTACT = 1
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,8 +36,9 @@ class MainActivity : AppCompatActivity() {
             addStyleForButton(button)
             buttons.add(button)
         }
-        modifyConstraintButton(buttons[1])
-        modifyLoginButton(buttons[2])
+        modifyConstraintButton(buttons[0])
+        modifyLoginButton(buttons[1])
+        modifyPickButton(buttons[2])
         buttons.forEach { linearLayout.addView(it) }
     }
 
@@ -60,4 +65,30 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, ConstraintActivity::class.java))
         }
     }
+
+    private fun modifyPickButton(button: Button) {
+        button.text = resources.getString(R.string.pick_button)
+        button.setOnClickListener {
+            val intent = Intent(Intent.ACTION_PICK, ContactsContract.Contacts.CONTENT_URI)
+            startActivityForResult(intent, REQUEST_CODE_PICK_CONTACT)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE_PICK_CONTACT && resultCode == RESULT_OK) {
+            val contactUri = data!!.data!!
+            val cursor = contentResolver.query(contactUri, null, null, null, null)
+            if (cursor != null && cursor.moveToFirst()) {
+                val nameIndex = cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME)
+                val name = cursor.getString(nameIndex)
+                val numberIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
+                val number = cursor.getString(numberIndex)
+                Toast.makeText(this, "$name $number", Toast.LENGTH_SHORT).show()
+                cursor.close()
+            }
+        }
+    }
 }
+
+// dimens.xml

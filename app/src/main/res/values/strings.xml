@@ -4,6 +4,7 @@
     <string name="button_text">button %d</string>
     <string name="constraint_layout_button">constraint_layout</string>
     <string name="login_button">login</string>
+    <string name="pick_button">pick_contact</string>
     <string name="hello_text">Hello!</string>
     <string name="github_picture">github Picture</string>
     <string name="title_Description">title</string>
@@ -16,4 +17,5 @@
     <string name="LoginButtonText">Login</string>
     <string name="connectWithHint">or connect with</string>
     <string name="emailText">Sign Up with E-mail</string>
+    <string name="contractPhotoDescription">contractPhoto</string>
 </resources>
