@@ -102,34 +102,5 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    //老的api
-//    @SuppressLint("Range")
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//        if (requestCode == REQUEST_CODE_PICK_CONTACT && resultCode == RESULT_OK) {
-//            val contactUri = data?.data ?: return
-//            val cursor = contentResolver.query(contactUri, null, null, null, null)
-//            cursor?.use {
-//                if (it.moveToFirst()) {
-//                    val name = it.getString(it.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME))
-//                    val hasPhoneNumber = it.getString(it.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER))
-//                    if (Integer.parseInt(hasPhoneNumber) > 0) {
-//                        val id = it.getString(it.getColumnIndex(ContactsContract.Contacts._ID))
-//                        val phonesCursor = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = " + id, null, null)
-//                        val numbers = mutableSetOf<String>()
-//                        phonesCursor?.use {
-//                            while (phonesCursor.moveToNext()) {
-//                                val phoneNumber = phonesCursor.getString(phonesCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)).replace("-", "").replace(" ", "")
-//                                numbers.add(phoneNumber)
-//                            }
-//                            Toast.makeText(this@MainActivity, "$name $numbers", Toast.LENGTH_LONG).show()
-//                        }
-//                    } else {
-//                        Toast.makeText(this@MainActivity, "$name - No numbers", Toast.LENGTH_LONG).show()
-//                    }
-//                }
-//            }
-//        }
-//    }
 }
 
