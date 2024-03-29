@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
     private fun modifyRecycleViewButton(button: Button) {
         button.text = resources.getString(R.string.recyclerView_button)
         button.setOnClickListener {
-            startActivity(Intent(this, LoginActivity::class.java))
+            startActivity(Intent(this, TweetsActivity::class.java))
         }
     }
 
