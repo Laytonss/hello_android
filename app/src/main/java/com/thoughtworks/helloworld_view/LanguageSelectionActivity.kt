@@ -3,8 +3,6 @@ package com.thoughtworks.helloworld_view
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import com.thoughtworks.helloworld_view.utils.FragmentUtils
 
 class LanguageSelectionActivity : AppCompatActivity() {
