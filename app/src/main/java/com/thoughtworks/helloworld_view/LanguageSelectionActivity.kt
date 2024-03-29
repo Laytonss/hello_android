@@ -16,16 +16,16 @@ class LanguageSelectionActivity : AppCompatActivity() {
         val javaButton = findViewById<Button>(R.id.button2)
         androidButton.setOnClickListener {
             val androidInfoFragment = AndroidInfoFragment()
-            val transaction2 = supportFragmentManager.beginTransaction()
-            transaction2.add(R.id.fragment_container_info, androidInfoFragment)
-            transaction2.commit()
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment_container_info, androidInfoFragment)
+            transaction.commit()
         }
 
         javaButton.setOnClickListener {
             val javaInfoFragment = JavaInfoFragment()
-            val transaction2 = supportFragmentManager.beginTransaction()
-            transaction2.add(R.id.fragment_container_info, javaInfoFragment)
-            transaction2.commit()
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.fragment_container_info, javaInfoFragment)
+            transaction.commit()
         }
     }
 }
