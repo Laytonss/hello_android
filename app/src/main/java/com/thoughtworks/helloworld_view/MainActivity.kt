@@ -43,7 +43,15 @@ class MainActivity : AppCompatActivity() {
         modifyLoginButton(buttons[1])
         modifyPickButton(buttons[2])
         modifyFragmentButton(buttons[3])
+        modifyRecycleViewButton(buttons[4])
         buttons.forEach { linearLayout.addView(it) }
+    }
+
+    private fun modifyRecycleViewButton(button: Button) {
+        button.text = resources.getString(R.string.recyclerView_button)
+        button.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+        }
     }
 
     private fun addStyleForButton(button: Button) {
