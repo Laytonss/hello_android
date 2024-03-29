@@ -9,9 +9,9 @@ import com.thoughtworks.helloworld_view.adapters.TweetAdapter
 import com.thoughtworks.helloworld_view.model.Sender
 import com.thoughtworks.helloworld_view.model.Tweet
 
-class TweetsActivity : AppCompatActivity() {
+const val IS_USE_JSON_FILE_FEATURE_TOGGLE = true
 
-    private val is_use_json_file_feature_toggle = true
+class TweetsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +28,7 @@ class TweetsActivity : AppCompatActivity() {
     }
 
     private fun getTweetListData(): List<Tweet> {
-        if (!is_use_json_file_feature_toggle) {
+        if (!IS_USE_JSON_FILE_FEATURE_TOGGLE) {
             return arrayListOf(
                 Tweet("content1", emptyList(), Sender("name1", "nick1", "avatar1"), emptyList()),
                 Tweet("content2", emptyList(), Sender("name2", "nick1", "avatar1"), emptyList()),
@@ -41,6 +41,6 @@ class TweetsActivity : AppCompatActivity() {
         val gson = Gson()
         val inputStream = resources.openRawResource(R.raw.tweets)
         val json = inputStream.bufferedReader().readText()
-        return gson.fromJson(json, Array<Tweet>::class.java).toList()
+        return gson.fromJson(json, Array<Tweet>::class.java).toList().filter { it.error == null && it.unknownError == null }
     }
 }
