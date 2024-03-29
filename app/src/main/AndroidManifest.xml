@@ -20,12 +20,14 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
                 <action android:name="android.intent.action.PICK" />
-                <data android:scheme="content"
+                <data
                     android:host="com.android.contacts"
-                    android:path="/contacts" />
+                    android:path="/contacts"
+                    android:scheme="content" />
             </intent-filter>
         </activity>
         <activity android:name=".ConstraintActivity" />
         <activity android:name=".LoginActivity" />
+        <activity android:name=".LanguageSelectionActivity" />
     </application>
 </manifest>

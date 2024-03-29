@@ -104,7 +104,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun modifyFragmentButton(button: Button) {
-        button.text = resources.getString(R.string.login_button)
+        button.text = resources.getString(R.string.fragment_button)
         button.setOnClickListener {
             startActivity(Intent(this, LanguageSelectionActivity::class.java))
         }

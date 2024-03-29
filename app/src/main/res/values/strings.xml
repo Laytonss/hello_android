@@ -19,4 +19,6 @@
     <string name="connectWithHint">or connect with</string>
     <string name="emailText">Sign Up with E-mail</string>
     <string name="contractPhotoDescription">contractPhoto</string>
+    <string name="navigation_button1">Android</string>
+    <string name="navigation_button2">Java</string>
 </resources>
