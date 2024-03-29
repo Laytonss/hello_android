@@ -15,11 +15,13 @@ class TweetAdapter(private val tweetList: List<Tweet>) : RecyclerView.Adapter<Tw
         val nameView: TextView
         val imageView: ImageView
         val contentView: TextView
+        val bottomTextView: TextView
 
         init {
             imageView = view.findViewById(R.id.avatar_view_id)
             nameView = view.findViewById(R.id.name_view_id)
             contentView = view.findViewById(R.id.content_view_id)
+            bottomTextView = view.findViewById(R.id.bottom_text_id)
         }
     }
 
@@ -33,6 +35,11 @@ class TweetAdapter(private val tweetList: List<Tweet>) : RecyclerView.Adapter<Tw
         viewHolder.imageView.setImageResource(R.drawable.avatar)
         viewHolder.nameView.text = tweetList[position].sender.userName
         viewHolder.contentView.text = tweetList[position].content
+        viewHolder.bottomTextView.visibility = if (position == tweetList.size - 1) {
+            TextView.VISIBLE
+        } else {
+            TextView.INVISIBLE
+        }
     }
 
     override fun getItemCount() = tweetList.size

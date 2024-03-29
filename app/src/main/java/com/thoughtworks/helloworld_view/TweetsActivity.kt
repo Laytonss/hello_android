@@ -23,29 +23,9 @@ class TweetsActivity : AppCompatActivity() {
 
     private fun initUI() {
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
-        val bottomTextView = findViewById<TextView>(R.id.bottom_text_id)
         recyclerView.layoutManager = LinearLayoutManager(this)
         val tweetAdapter = TweetAdapter(getTweetListData())
         recyclerView.adapter = tweetAdapter
-        configBottomHintMessage(recyclerView, bottomTextView)
-    }
-
-    private fun configBottomHintMessage(recyclerView: RecyclerView, bottomTextView: TextView) {
-        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
-                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                    val layoutManager = recyclerView.layoutManager as LinearLayoutManager
-                    val lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition()
-                    val totalItemCount = recyclerView.adapter!!.itemCount
-                    if (lastVisibleItemPosition == totalItemCount - 1) {
-                        bottomTextView.visibility = TextView.VISIBLE
-                    } else {
-                        bottomTextView.visibility = TextView.INVISIBLE
-                    }
-                }
-            }
-        })
     }
 
     private fun getTweetListData(): List<Tweet> {
