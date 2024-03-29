@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
         modifyConstraintButton(buttons[0])
         modifyLoginButton(buttons[1])
         modifyPickButton(buttons[2])
+        modifyFragmentButton(buttons[3])
         buttons.forEach { linearLayout.addView(it) }
     }
 
@@ -102,5 +103,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun modifyFragmentButton(button: Button) {
+        button.text = resources.getString(R.string.login_button)
+        button.setOnClickListener {
+            startActivity(Intent(this, LanguageSelectionActivity::class.java))
+        }
+    }
 }
 
