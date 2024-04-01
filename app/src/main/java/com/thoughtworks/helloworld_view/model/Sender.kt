@@ -1,44 +1,29 @@
-package com.thoughtworks.helloworld_view.model;
+package com.thoughtworks.helloworld_view.model
 
+class Sender {
+     var userName: String? = null
+     var nick: String? = null
+     var avatar: String? = null
 
-public class Sender {
-    private String userName;
-    private String nick;
-    private String avatar;
-
-    public Sender() {
+    constructor()
+    constructor(userName: String?, nick: String?, avatar: String?) {
+        this.userName = userName
+        this.nick = nick
+        this.avatar = avatar
     }
 
-    public Sender(String userName, String nick, String avatar) {
-        this.userName = userName;
-        this.nick = nick;
-        this.avatar = avatar;
+    fun setUserName(userName: String?): Sender {
+        this.userName = userName
+        return this
     }
 
-    public String getUserName() {
-        return userName;
+    fun setNick(nick: String?): Sender {
+        this.nick = nick
+        return this
     }
 
-    public Sender setUserName(String userName) {
-        this.userName = userName;
-        return this;
-    }
-
-    public String getNick() {
-        return nick;
-    }
-
-    public Sender setNick(String nick) {
-        this.nick = nick;
-        return this;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public Sender setAvatar(String avatar) {
-        this.avatar = avatar;
-        return this;
+    fun setAvatar(avatar: String?): Sender {
+        this.avatar = avatar
+        return this
     }
 }

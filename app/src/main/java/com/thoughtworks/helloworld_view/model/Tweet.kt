@@ -1,83 +1,50 @@
-package com.thoughtworks.helloworld_view.model;
+package com.thoughtworks.helloworld_view.model
 
-import com.google.gson.annotations.SerializedName;
+import com.google.gson.annotations.SerializedName
 
-import java.util.List;
+class Tweet {
+    var content: String? = null
+        private set
+    var images: List<Image>? = null
+        private set
+    var sender: Sender? = null
+        private set
+    var comments: List<Comment>? = null
+        private set
+    var error: String? = null
 
-public class Tweet {
-    private String content;
-    private List<Image> images;
-    private Sender sender;
-    private List<Comment> comments;
-    private String error;
     @SerializedName("unknown error")
-    private String unknownError;
+    var unknownError: String? = null
 
-    public Tweet() {
-
+    constructor()
+    constructor(content: String?, images: List<Image>?, sender: Sender?, comments: List<Comment>?) {
+        this.content = content
+        this.images = images
+        this.sender = sender
+        this.comments = comments
     }
 
-    public Tweet(String content, List<Image> images, Sender sender, List<Comment> comments) {
-        this.content = content;
-        this.images = images;
-        this.sender = sender;
-        this.comments = comments;
+    fun setContent(content: String?): Tweet {
+        this.content = content
+        return this
     }
 
-    public String getContent() {
-        return content;
+    fun setImages(images: List<Image>?): Tweet {
+        this.images = images
+        return this
     }
 
-    public Tweet setContent(String content) {
-        this.content = content;
-        return this;
+    fun setSender(sender: Sender?): Tweet {
+        this.sender = sender
+        return this
     }
 
-    public List<Image> getImages() {
-        return images;
+    fun setComments(comments: List<Comment>?): Tweet {
+        this.comments = comments
+        return this
     }
 
-    public Tweet setImages(List<Image> images) {
-        this.images = images;
-        return this;
-    }
-
-    public Sender getSender() {
-        return sender;
-    }
-
-    public Tweet setSender(Sender sender) {
-        this.sender = sender;
-        return this;
-    }
-
-    public List<Comment> getComments() {
-        return comments;
-    }
-
-    public Tweet setComments(List<Comment> comments) {
-        this.comments = comments;
-        return this;
-    }
-
-    public String getError() {
-        return error;
-    }
-
-    public void setError(String error) {
-        this.error = error;
-    }
-
-    public String getUnknownError() {
-        return unknownError;
-    }
-
-    public void setUnknownError(String unknownError) {
-        this.unknownError = unknownError;
-    }
-
-    @Override
-    public String toString() {
-        return "content " + content + " \n";
+    override fun toString(): String {
+        return "content $content \n"
     }
 }

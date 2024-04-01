@@ -36,7 +36,7 @@ class TweetAdapter(private val tweetList: List<Tweet>) : RecyclerView.Adapter<Tw
         viewHolder.imageView.load(R.drawable.avatar) {
             transformations(CircleCropTransformation())
         }
-        viewHolder.nameView.text = tweetList[position].sender.userName
+        viewHolder.nameView.text = tweetList[position].sender?.userName
         viewHolder.contentView.text = tweetList[position].content
         viewHolder.bottomTextView.visibility = if (position == tweetList.size - 1) {
             TextView.VISIBLE

@@ -1,19 +1,8 @@
-package com.thoughtworks.helloworld_view.model;
+package com.thoughtworks.helloworld_view.model
 
-
-public class Image {
-    private String url;
-
-    public Image(String url) {
-        this.url = url;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public Image setUrl(String url) {
-        this.url = url;
-        return this;
+class Image(var url: String) {
+    fun setUrl(url: String): Image {
+        this.url = url
+        return this
     }
 }
