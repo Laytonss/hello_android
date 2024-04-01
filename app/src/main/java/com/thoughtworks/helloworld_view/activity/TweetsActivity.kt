@@ -1,10 +1,11 @@
-package com.thoughtworks.helloworld_view
+package com.thoughtworks.helloworld_view.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
+import com.thoughtworks.helloworld_view.R
 import com.thoughtworks.helloworld_view.adapters.TweetAdapter
 import com.thoughtworks.helloworld_view.model.Sender
 import com.thoughtworks.helloworld_view.model.Tweet

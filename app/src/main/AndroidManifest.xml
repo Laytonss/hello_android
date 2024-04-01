@@ -16,7 +16,7 @@
         android:theme="@style/Theme.HelloWorld_view"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,10 +28,10 @@
                     android:scheme="content" />
             </intent-filter>
         </activity>
-        <activity android:name=".ConstraintActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".LanguageSelectionActivity" />
-        <activity android:name=".TweetsActivity" />
-        <activity android:name=".ThreadActivity" />
+        <activity android:name=".activity.ConstraintActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.LanguageSelectionActivity" />
+        <activity android:name=".activity.TweetsActivity" />
+        <activity android:name=".activity.ThreadActivity" />
     </application>
 </manifest>

@@ -1,8 +1,9 @@
-package com.thoughtworks.helloworld_view
+package com.thoughtworks.helloworld_view.activity
 
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.thoughtworks.helloworld_view.R
 import com.thoughtworks.helloworld_view.fragment.AndroidInfoFragment
 import com.thoughtworks.helloworld_view.fragment.JavaInfoFragment
 import com.thoughtworks.helloworld_view.utils.FragmentUtils

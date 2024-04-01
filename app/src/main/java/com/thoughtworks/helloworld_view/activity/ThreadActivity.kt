@@ -1,9 +1,10 @@
-package com.thoughtworks.helloworld_view
+package com.thoughtworks.helloworld_view.activity
 
 import android.os.AsyncTask
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.thoughtworks.helloworld_view.R
 
 class ThreadActivity : AppCompatActivity() {
 

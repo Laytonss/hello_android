@@ -1,4 +1,4 @@
-package com.thoughtworks.helloworld_view
+package com.thoughtworks.helloworld_view.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -13,6 +13,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.thoughtworks.helloworld_view.R
 
 const val READ_CONTRACT_PERMISSION = 2
 
