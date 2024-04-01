@@ -1,10 +1,11 @@
-package com.thoughtworks.helloworld_view
+package com.thoughtworks.helloworld_view.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.thoughtworks.helloworld_view.R
 
 class JavaInfoFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

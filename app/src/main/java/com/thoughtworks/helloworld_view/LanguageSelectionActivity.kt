@@ -3,8 +3,8 @@ package com.thoughtworks.helloworld_view
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
+import com.thoughtworks.helloworld_view.fragment.AndroidInfoFragment
+import com.thoughtworks.helloworld_view.fragment.JavaInfoFragment
 import com.thoughtworks.helloworld_view.utils.FragmentUtils
 
 class LanguageSelectionActivity : AppCompatActivity() {
@@ -24,5 +24,6 @@ class LanguageSelectionActivity : AppCompatActivity() {
         javaButton.setOnClickListener {
             FragmentUtils.replaceFragment(supportFragmentManager, R.id.fragment_container_info, JavaInfoFragment())
         }
+        FragmentUtils.replaceFragment(supportFragmentManager, R.id.fragment_container_info, AndroidInfoFragment())
     }
 }
