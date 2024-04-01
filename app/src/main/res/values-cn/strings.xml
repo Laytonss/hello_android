@@ -6,6 +6,7 @@
     <string name="login_button">login</string>
     <string name="pick_button">pick_contact</string>
     <string name="recyclerView_button">RecyclerView</string>
+    <string name="thread_button">thread</string>
     <string name="fragment_button">fragment</string>
     <string name="hello_text">Hello!</string>
     <string name="github_picture">github Picture</string>

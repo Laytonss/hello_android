@@ -44,7 +44,15 @@ class MainActivity : AppCompatActivity() {
         modifyPickButton(buttons[2])
         modifyFragmentButton(buttons[3])
         modifyRecycleViewButton(buttons[4])
+        modifyThreadButton(buttons[5])
         buttons.forEach { linearLayout.addView(it) }
+    }
+
+    private fun modifyThreadButton(button: Button) {
+        button.text = resources.getString(R.string.thread_button)
+        button.setOnClickListener {
+            startActivity(Intent(this, ThreadActivity::class.java))
+        }
     }
 
     private fun modifyRecycleViewButton(button: Button) {
