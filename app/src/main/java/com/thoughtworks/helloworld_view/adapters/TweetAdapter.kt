@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.transform.CircleCropTransformation
 import com.thoughtworks.helloworld_view.R
 import com.thoughtworks.helloworld_view.model.Tweet
 
@@ -31,7 +33,9 @@ class TweetAdapter(private val tweetList: List<Tweet>) : RecyclerView.Adapter<Tw
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.imageView.setImageResource(R.drawable.avatar)
+        viewHolder.imageView.load(R.drawable.avatar) {
+            transformations(CircleCropTransformation())
+        }
         viewHolder.nameView.text = tweetList[position].sender.userName
         viewHolder.contentView.text = tweetList[position].content
         viewHolder.bottomTextView.visibility = if (position == tweetList.size - 1) {

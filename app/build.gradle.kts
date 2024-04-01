@@ -66,6 +66,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.coil)
     implementation(libs.json)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
