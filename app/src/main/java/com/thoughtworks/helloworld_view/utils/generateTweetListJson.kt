@@ -17,12 +17,10 @@ private fun generateTweetListJson() {
         Tweet("content string very big content string very big content string very big content string very big", emptyList(), Sender("name", "nick1", "avatar1"), emptyList()),
         Tweet("content last", emptyList(), Sender("name", "nick1", "avatar1"), emptyList()),
     )
-    val errorTweet = Tweet("content8", emptyList(), Sender("name8", "nick1", "avatar1"), emptyList())
-    errorTweet.error = "error"
+    val errorTweet = Tweet("content8", emptyList(), Sender("name8", "nick1", "avatar1"), emptyList(), "error")
     tweetListData.add(errorTweet)
 
-    val unKnowErrorTweet = Tweet("content9", emptyList(), Sender("name9", "nick1", "avatar1"), emptyList())
-    errorTweet.unknownError = "unknownError"
+    val unKnowErrorTweet = Tweet("content9", emptyList(), Sender("name9", "nick1", "avatar1"), emptyList(), null, "unknownError")
     tweetListData.add(unKnowErrorTweet)
     println(gson.toJson(tweetListData))
 }
