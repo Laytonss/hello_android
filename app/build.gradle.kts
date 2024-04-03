@@ -66,6 +66,8 @@ android {
 }
 
 dependencies {
+    implementation(libs.room)
+    implementation(libs.roomCoroutines)
     implementation(libs.coil)
     implementation(libs.dataStore)
     implementation(libs.json)
