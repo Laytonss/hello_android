@@ -8,6 +8,7 @@
     <string name="recyclerView_button">RecyclerView</string>
     <string name="thread_button">thread</string>
     <string name="share_button">SharePreference</string>
+    <string name="data_store_button">DataStore</string>
     <string name="share_preference_key">>com.thoughtworks.hello_android.shareFile</string>
     <string name="fragment_button">fragment</string>
     <string name="hello_text">Hello!</string>

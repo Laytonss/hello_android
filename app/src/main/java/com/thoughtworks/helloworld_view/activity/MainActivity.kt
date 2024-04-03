@@ -46,7 +46,15 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         modifyRecycleViewButton(buttons[4])
         modifyThreadButton(buttons[5])
         modifySharePreferenceButton(buttons[6])
+        modifyDataStoreButton(buttons[7])
         buttons.forEach { linearLayout.addView(it) }
+    }
+
+    private fun modifyDataStoreButton(button: Button) {
+        button.text = resources.getString(R.string.data_store_button)
+        button.setOnClickListener {
+            startActivity(Intent(this, DataStoreActivity::class.java))
+        }
     }
 
     private fun modifySharePreferenceButton(button: Button) {
