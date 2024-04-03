@@ -46,7 +46,15 @@ class MainActivity : AppCompatActivity() {
         modifyFragmentButton(buttons[3])
         modifyRecycleViewButton(buttons[4])
         modifyThreadButton(buttons[5])
+        modifySharePreferenceButton(buttons[5])
         buttons.forEach { linearLayout.addView(it) }
+    }
+
+    private fun modifySharePreferenceButton(button: Button) {
+        button.text = resources.getString(R.string.share_button)
+        button.setOnClickListener {
+            startActivity(Intent(this, SharePreferenceActivity::class.java))
+        }
     }
 
     private fun modifyThreadButton(button: Button) {
