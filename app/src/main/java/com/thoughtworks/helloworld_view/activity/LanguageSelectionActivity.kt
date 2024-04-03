@@ -8,10 +8,9 @@ import com.thoughtworks.helloworld_view.fragment.AndroidInfoFragment
 import com.thoughtworks.helloworld_view.fragment.JavaInfoFragment
 import com.thoughtworks.helloworld_view.utils.FragmentUtils
 
-class LanguageSelectionActivity : AppCompatActivity() {
+class LanguageSelectionActivity : AppCompatActivity(R.layout.language_selection_layout) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.language_selection_layout)
         modifyNavigation()
     }
 

@@ -4,9 +4,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.thoughtworks.helloworld_view.R
 
-class ConstraintActivity : AppCompatActivity() {
+class ConstraintActivity : AppCompatActivity(R.layout.constraint_layout) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.constraint_layout)
     }
 }

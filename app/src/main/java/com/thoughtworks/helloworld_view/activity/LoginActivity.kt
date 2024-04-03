@@ -7,11 +7,10 @@ import androidx.appcompat.app.AppCompatActivity
 import com.thoughtworks.helloworld_view.R
 
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity(R.layout.login_layout) {
     override fun onCreate(savedInstanceState: Bundle?) {
         Log.d("LoginActivity Status", "onCreate状态")
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.login_layout)
         supportActionBar?.hide()
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
     }

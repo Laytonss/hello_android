@@ -6,13 +6,12 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.thoughtworks.helloworld_view.R
 
-class ThreadActivity : AppCompatActivity() {
+class ThreadActivity : AppCompatActivity(R.layout.thread_layout) {
 
     private lateinit var button: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.thread_layout)
         button = findViewById(R.id.thread_button)
         button.text = getString(R.string.thread_button_start_hint)
         button.setOnClickListener {

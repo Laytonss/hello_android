@@ -12,11 +12,10 @@ import com.thoughtworks.helloworld_view.model.Tweet
 
 const val IS_USE_JSON_FILE_FEATURE_TOGGLE = true
 
-class TweetsActivity : AppCompatActivity() {
+class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.tweets_layout)
         initUI()
     }
 
