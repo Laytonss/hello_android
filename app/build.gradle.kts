@@ -67,6 +67,7 @@ android {
 
 dependencies {
     implementation(libs.coil)
+    implementation(libs.dataStore)
     implementation(libs.json)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

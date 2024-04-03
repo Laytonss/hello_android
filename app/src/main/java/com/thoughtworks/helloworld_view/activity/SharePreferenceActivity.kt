@@ -15,7 +15,6 @@ class SharePreferenceActivity : AppCompatActivity(R.layout.share_layout) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initUi()
-
     }
 
     private fun initUi() {
