@@ -32,4 +32,7 @@
     <string name="thread_button_start_hint">按下开始计数</string>
     <string name="thread_button_end_hint">计数完成，可再次按下计数</string>
     <string name="hint_button_text">知道了</string>
+    <string name="ishintshownKey">isHintShown</string>
+    <string name="SpHint2">欢迎您回来</string>
+    <string name="SpHint1">提示信息：\n 点击：\"知道了\"不再显示</string>
 </resources>

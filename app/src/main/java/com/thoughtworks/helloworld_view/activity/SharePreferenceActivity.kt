@@ -20,7 +20,7 @@ class SharePreferenceActivity : AppCompatActivity(R.layout.share_layout) {
 
     private fun initUi() {
         val sharedPref = this.getSharedPreferences(getString(R.string.share_preference_key), Context.MODE_PRIVATE)
-        val isHintShown = sharedPref.getBoolean("isHintShown", false)
+        val isHintShown = sharedPref.getBoolean(getString(R.string.ishintshownKey), false)
         Log.d("isHintShown", "$isHintShown")
         initHintTextView(isHintShown)
         initHintButton(isHintShown, sharedPref)
@@ -29,9 +29,9 @@ class SharePreferenceActivity : AppCompatActivity(R.layout.share_layout) {
     private fun initHintTextView(isHintShown: Boolean) {
         val textView = findViewById<TextView>(R.id.hint_text_id)
         textView.text = if (isHintShown) {
-            "欢迎您回来"
+            getString(R.string.SpHint2)
         } else {
-            "提示信息：\n 点击：\"知道了\"不再显示"
+            getString(R.string.SpHint1)
         }
     }
 
@@ -44,7 +44,7 @@ class SharePreferenceActivity : AppCompatActivity(R.layout.share_layout) {
         }
         button.setOnClickListener {
             with(sharedPref.edit()) {
-                putBoolean("isHintShown", true)
+                putBoolean(getString(R.string.ishintshownKey), true)
                 commit()
             }
             startActivity(Intent(this, MainActivity::class.java))
