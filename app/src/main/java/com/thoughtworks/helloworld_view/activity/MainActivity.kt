@@ -1,6 +1,7 @@
 package com.thoughtworks.helloworld_view.activity
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.provider.ContactsContract
@@ -45,7 +46,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         modifyFragmentButton(buttons[3])
         modifyRecycleViewButton(buttons[4])
         modifyThreadButton(buttons[5])
-        modifySharePreferenceButton(buttons[5])
+        modifySharePreferenceButton(buttons[6])
         buttons.forEach { linearLayout.addView(it) }
     }
 

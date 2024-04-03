@@ -7,7 +7,8 @@
     <string name="pick_button">pick_contact</string>
     <string name="recyclerView_button">RecyclerView</string>
     <string name="thread_button">thread</string>
-    <string name="share_button">thread</string>
+    <string name="share_button">SharePreference</string>
+    <string name="share_preference_key">>com.thoughtworks.hello_android.shareFile</string>
     <string name="fragment_button">fragment</string>
     <string name="hello_text">Hello!</string>
     <string name="github_picture">github Picture</string>
@@ -30,4 +31,5 @@
     <string name="avatar_photo">avatar photo</string>
     <string name="thread_button_start_hint">按下开始计数</string>
     <string name="thread_button_end_hint">计数完成，可再次按下计数</string>
+    <string name="hint_button_text">知道了</string>
 </resources>
