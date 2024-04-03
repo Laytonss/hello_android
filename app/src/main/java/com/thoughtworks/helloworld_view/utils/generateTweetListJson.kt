@@ -1,8 +1,8 @@
 package com.thoughtworks.helloworld_view.utils
 
 import com.google.gson.Gson
-import com.thoughtworks.helloworld_view.model.Sender
-import com.thoughtworks.helloworld_view.model.Tweet
+import com.thoughtworks.helloworld_view.room.entity.Sender
+import com.thoughtworks.helloworld_view.room.entity.Tweet
 
 private fun generateTweetListJson() {
     val gson = Gson()

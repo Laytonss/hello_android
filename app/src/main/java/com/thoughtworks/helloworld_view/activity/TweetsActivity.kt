@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.thoughtworks.helloworld_view.R
 import com.thoughtworks.helloworld_view.adapters.TweetAdapter
-import com.thoughtworks.helloworld_view.model.Sender
-import com.thoughtworks.helloworld_view.model.Tweet
+import com.thoughtworks.helloworld_view.room.entity.Sender
+import com.thoughtworks.helloworld_view.room.entity.Tweet
 
 const val IS_USE_JSON_FILE_FEATURE_TOGGLE = false
 const val IS_USE_ASSET_FILE_FEATURE_TOGGLE = true
