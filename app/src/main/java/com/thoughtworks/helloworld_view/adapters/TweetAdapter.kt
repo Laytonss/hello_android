@@ -16,6 +16,7 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class TweetAdapter(private val tweetDataListFlow: Flow<List<TweetData>>) : RecyclerView.Adapter<TweetAdapter.ViewHolder>() {
 
@@ -25,7 +26,10 @@ class TweetAdapter(private val tweetDataListFlow: Flow<List<TweetData>>) : Recyc
         MainScope().launch(Dispatchers.IO) {
             tweetDataListFlow.collectLatest {
                 Log.d("room", "flow里的值为 ${it}")
-                tweetDataList = it
+                withContext(Dispatchers.Main) {
+                    tweetDataList = it
+                    notifyDataSetChanged()
+                }
             }
         }
     }
@@ -48,12 +52,14 @@ class TweetAdapter(private val tweetDataListFlow: Flow<List<TweetData>>) : Recyc
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.imageView.load(R.drawable.avatar) {
-            transformations(CircleCropTransformation())
+        if (::tweetDataList.isInitialized && position < tweetDataList.size) {
+            viewHolder.imageView.load(R.drawable.avatar) {
+                transformations(CircleCropTransformation())
+            }
+            viewHolder.nameView.text = tweetDataList[position].sender?.userName
+            viewHolder.contentView.text = tweetDataList[position].tweet.content
         }
-        viewHolder.nameView.text = tweetDataList[position].sender?.userName
-        viewHolder.contentView.text = tweetDataList[position].tweet.content
     }
 
-    override fun getItemCount() = tweetDataList.size
+    override fun getItemCount() = if (::tweetDataList.isInitialized) tweetDataList.size else 0
 }
