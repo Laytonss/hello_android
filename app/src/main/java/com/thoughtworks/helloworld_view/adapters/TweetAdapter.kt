@@ -1,5 +1,6 @@
 package com.thoughtworks.helloworld_view.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,11 +19,12 @@ import kotlinx.coroutines.launch
 
 class TweetAdapter(private val tweetDataListFlow: Flow<List<TweetData>>) : RecyclerView.Adapter<TweetAdapter.ViewHolder>() {
 
-    private var tweetDataList = emptyList<TweetData>()
+    private lateinit var tweetDataList: List<TweetData>
 
     init {
         MainScope().launch(Dispatchers.IO) {
             tweetDataListFlow.collectLatest {
+                Log.d("room", "flow里的值为 ${it}")
                 tweetDataList = it
             }
         }
@@ -49,7 +51,7 @@ class TweetAdapter(private val tweetDataListFlow: Flow<List<TweetData>>) : Recyc
         viewHolder.imageView.load(R.drawable.avatar) {
             transformations(CircleCropTransformation())
         }
-        viewHolder.nameView.text = tweetDataList[position].sender.userName
+        viewHolder.nameView.text = tweetDataList[position].sender?.userName
         viewHolder.contentView.text = tweetDataList[position].tweet.content
     }
 

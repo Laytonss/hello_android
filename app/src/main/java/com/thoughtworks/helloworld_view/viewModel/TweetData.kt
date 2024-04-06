@@ -14,17 +14,17 @@ data class TweetData(
         parentColumn = "tweetId",
         entityColumn = "tweetOwnerId"
     )
-    val sender: Sender,
+    val sender: Sender?,
 
     @Relation(
         parentColumn = "tweetId",
         entityColumn = "tweetOwnerId"
     )
-    val images: List<Image>,
+    val images: List<Image>?,
 
     @Relation(
         parentColumn = "tweetId",
         entityColumn = "tweetOwnerId"
     )
-    val comments: List<Comment>,
+    val comments: List<Comment>?,
 )
