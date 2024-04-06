@@ -12,7 +12,7 @@ import com.thoughtworks.helloworld_view.room.entity.Comment
 import com.thoughtworks.helloworld_view.room.entity.Image
 import com.thoughtworks.helloworld_view.room.entity.Sender
 import com.thoughtworks.helloworld_view.room.entity.Tweet
-import com.thoughtworks.helloworld_view.room.model.TweetData
+import com.thoughtworks.helloworld_view.viewModel.TweetData
 import kotlinx.coroutines.runBlocking
 
 

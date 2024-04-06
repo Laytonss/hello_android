@@ -1,4 +1,4 @@
-package com.thoughtworks.helloworld_view.room.model
+package com.thoughtworks.helloworld_view.viewModel
 
 import androidx.room.Embedded
 import androidx.room.Relation

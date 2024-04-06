@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.thoughtworks.helloworld_view.R
-import com.thoughtworks.helloworld_view.room.model.TweetData
+import com.thoughtworks.helloworld_view.viewModel.TweetData
 
 class TweetAdapter(private val tweetDataList: List<TweetData>) : RecyclerView.Adapter<TweetAdapter.ViewHolder>() {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

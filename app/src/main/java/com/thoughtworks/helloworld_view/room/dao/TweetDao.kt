@@ -5,7 +5,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
 import com.thoughtworks.helloworld_view.room.entity.Tweet
-import com.thoughtworks.helloworld_view.room.model.TweetData
+import com.thoughtworks.helloworld_view.viewModel.TweetData
 
 @Dao
 interface TweetDao {
