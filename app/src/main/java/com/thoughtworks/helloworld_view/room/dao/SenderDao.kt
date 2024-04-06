@@ -4,7 +4,6 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import com.thoughtworks.helloworld_view.room.entity.Sender
-import com.thoughtworks.helloworld_view.room.entity.Tweet
 
 @Dao
 interface SenderDao {

@@ -1,7 +1,6 @@
 package com.thoughtworks.helloworld_view.application
 
 import android.app.Application
-import android.content.Context
 import android.util.Log
 import androidx.room.Room
 import com.thoughtworks.helloworld_view.room.dao.CommentDao

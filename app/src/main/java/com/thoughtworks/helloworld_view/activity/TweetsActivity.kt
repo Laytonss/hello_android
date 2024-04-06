@@ -39,7 +39,6 @@ class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
         val application = applicationContext as MyApplication
         val tweetDao = application.getTweetDao()
         return runBlocking {
-            val tweets = tweetDao.getAll()
             val tweetDataList = tweetDao.getTweetDataList()
             Log.d("room数据库查询结果", "tweetData个数:${tweetDataList.size} tweetData第一个结果${tweetDataList.first()}")
             tweetDataList.filter { it.tweet.error == null && it.tweet.unknownError == null }
