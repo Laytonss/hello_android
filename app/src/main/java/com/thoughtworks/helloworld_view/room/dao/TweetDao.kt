@@ -11,5 +11,5 @@ interface TweetDao {
     suspend fun getAll(): List<Tweet>
 
     @Insert
-    suspend fun insertALL(tweets: List<Tweet>): Int
+    suspend fun insertALL(tweets: List<Tweet>)
 }
