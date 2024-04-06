@@ -1,6 +1,8 @@
 package com.thoughtworks.helloworld_view.application
 
 import android.app.Application
+import android.content.Context
+import android.util.Log
 import androidx.room.Room
 import com.thoughtworks.helloworld_view.room.dao.TweetDao
 import com.thoughtworks.helloworld_view.room.dataBase.AppDatabase
@@ -15,6 +17,7 @@ class MyApplication : Application() {
             AppDatabase::class.java,
             "my-database"
         ).build()
+        Log.d("room", "database init finish")
     }
 
     override fun onTerminate() {

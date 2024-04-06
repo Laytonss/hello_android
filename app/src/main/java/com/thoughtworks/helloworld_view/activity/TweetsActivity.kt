@@ -1,17 +1,21 @@
 package com.thoughtworks.helloworld_view.activity
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.thoughtworks.helloworld_view.R
 import com.thoughtworks.helloworld_view.adapters.TweetAdapter
+import com.thoughtworks.helloworld_view.application.MyApplication
 import com.thoughtworks.helloworld_view.room.entity.Sender
 import com.thoughtworks.helloworld_view.room.entity.Tweet
+import kotlinx.coroutines.runBlocking
 
 const val IS_USE_JSON_FILE_FEATURE_TOGGLE = false
-const val IS_USE_ASSET_FILE_FEATURE_TOGGLE = true
+const val IS_USE_ASSET_FILE_FEATURE_TOGGLE = false
+const val IS_USE_ROOM_DATA_FEATURE_TOGGLE = true
 
 class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
 
@@ -39,6 +43,17 @@ class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
             assets.open("tweets.json").use { inputStream ->
                 val json = inputStream.bufferedReader().readText()
                 return gson.fromJson(json, Array<Tweet>::class.java).toList().filter { it.error == null && it.unknownError == null }
+            }
+        }
+        if (IS_USE_ROOM_DATA_FEATURE_TOGGLE) {
+            val application = applicationContext as MyApplication
+            val tweetDao = application.getTweetDao()
+            return runBlocking {
+                val line = tweetDao.insertALL(arrayListOf(Tweet("content1", emptyList(), Sender("name1", "nick1", "avatar1"), emptyList())))
+                Log.d("room", "$line")
+                val tweets = tweetDao.getAll()
+                Log.d("room", "${tweets.first().content}")
+                tweets.filter { it.error == null && it.unknownError == null }
             }
         }
         return arrayListOf(

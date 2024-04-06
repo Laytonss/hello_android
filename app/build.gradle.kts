@@ -4,6 +4,8 @@ import java.util.Properties
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    kotlin("kapt")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -68,6 +70,8 @@ android {
 dependencies {
     implementation(libs.room)
     implementation(libs.roomCoroutines)
+//    implementation(libs.roomAnnotation)
+    kapt("androidx.room:room-compiler:2.6.1")
     implementation(libs.coil)
     implementation(libs.dataStore)
     implementation(libs.json)
