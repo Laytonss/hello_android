@@ -8,8 +8,8 @@ import com.thoughtworks.helloworld_view.room.entity.Sender
 @Dao
 interface SenderDao {
     @Query("SELECT * FROM Sender")
-    suspend fun getAll(): List<Sender>
+    fun getAll(): List<Sender>
 
     @Insert
-    suspend fun insertALL(senderList: List<Sender>)
+    fun insertALL(senderList: List<Sender>)
 }

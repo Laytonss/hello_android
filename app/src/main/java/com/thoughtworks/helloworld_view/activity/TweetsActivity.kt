@@ -13,6 +13,10 @@ import com.thoughtworks.helloworld_view.room.entity.Image
 import com.thoughtworks.helloworld_view.room.entity.Sender
 import com.thoughtworks.helloworld_view.room.entity.Tweet
 import com.thoughtworks.helloworld_view.viewModel.TweetData
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 
@@ -30,19 +34,15 @@ class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
         recyclerView.adapter = tweetAdapter
     }
 
-    private fun getTweetListData(): List<TweetData> {
+    private fun getTweetListData(): Flow<List<TweetData>> {
         insertDataToDB()
         return getTweetDataFromDB()
     }
 
-    private fun getTweetDataFromDB(): List<TweetData> {
+    private fun getTweetDataFromDB(): Flow<List<TweetData>> {
         val application = applicationContext as MyApplication
         val tweetDao = application.getTweetDao()
-        return runBlocking {
-            val tweetDataList = tweetDao.getTweetDataList()
-            Log.d("room数据库查询结果", "tweetData个数:${tweetDataList.size} tweetData第一个结果${tweetDataList.first()}")
-            tweetDataList.filter { it.tweet.error == null && it.tweet.unknownError == null }
-        }
+        return tweetDao.getTweetDataList()
     }
 
     private fun insertDataToDB() {
@@ -51,7 +51,7 @@ class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
         val senderDao = application.getSenderDao()
         val imageDao = application.getImageDao()
         val commentDao = application.getCommentDao()
-        runBlocking {
+        MainScope().launch(Dispatchers.IO) {
             tweetDao.insertALL(arrayListOf(Tweet(1, "content1", "error", "un error")))
             senderDao.insertALL(arrayListOf(Sender(1, 1, "name")))
             imageDao.insertALL(arrayListOf(Image(1, 1, "url1"), Image(2, 1, "url2")))

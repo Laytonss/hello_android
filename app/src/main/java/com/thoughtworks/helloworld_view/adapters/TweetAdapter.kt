@@ -10,8 +10,24 @@ import coil.load
 import coil.transform.CircleCropTransformation
 import com.thoughtworks.helloworld_view.R
 import com.thoughtworks.helloworld_view.viewModel.TweetData
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
-class TweetAdapter(private val tweetDataList: List<TweetData>) : RecyclerView.Adapter<TweetAdapter.ViewHolder>() {
+class TweetAdapter(private val tweetDataListFlow: Flow<List<TweetData>>) : RecyclerView.Adapter<TweetAdapter.ViewHolder>() {
+
+    private var tweetDataList = emptyList<TweetData>()
+
+    init {
+        MainScope().launch(Dispatchers.IO) {
+            tweetDataListFlow.collectLatest {
+                tweetDataList = it
+            }
+        }
+    }
+
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val nameView: TextView
         val imageView: ImageView

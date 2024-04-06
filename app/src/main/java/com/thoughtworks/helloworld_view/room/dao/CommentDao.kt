@@ -8,8 +8,8 @@ import com.thoughtworks.helloworld_view.room.entity.Comment
 @Dao
 interface CommentDao {
     @Query("SELECT * FROM Comment")
-    suspend fun getAll(): List<Comment>
+    fun getAll(): List<Comment>
 
     @Insert
-    suspend fun insertALL(commentList: List<Comment>)
+    fun insertALL(commentList: List<Comment>)
 }

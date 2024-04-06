@@ -8,8 +8,8 @@ import com.thoughtworks.helloworld_view.room.entity.Image
 @Dao
 interface ImageDao {
     @Query("SELECT * FROM Image")
-    suspend fun getAll(): List<Image>
+    fun getAll(): List<Image>
 
     @Insert
-    suspend fun insertALL(imageList: List<Image>)
+    fun insertALL(imageList: List<Image>)
 }

@@ -6,16 +6,17 @@ import androidx.room.Query
 import androidx.room.Transaction
 import com.thoughtworks.helloworld_view.room.entity.Tweet
 import com.thoughtworks.helloworld_view.viewModel.TweetData
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface TweetDao {
     @Query("SELECT * FROM Tweet")
-    suspend fun getAll(): List<Tweet>
+    fun getAll(): List<Tweet>
 
     @Insert
-    suspend fun insertALL(tweets: List<Tweet>)
+    fun insertALL(tweets: List<Tweet>)
 
     @Transaction
     @Query("SELECT * FROM Tweet")
-    suspend fun getTweetDataList(): List<TweetData>
+    fun getTweetDataList(): Flow<List<TweetData>>
 }
