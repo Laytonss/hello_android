@@ -12,6 +12,7 @@ import com.thoughtworks.helloworld_view.room.entity.Comment
 import com.thoughtworks.helloworld_view.room.entity.Image
 import com.thoughtworks.helloworld_view.room.entity.Sender
 import com.thoughtworks.helloworld_view.room.entity.Tweet
+import com.thoughtworks.helloworld_view.room.model.TweetData
 import kotlinx.coroutines.runBlocking
 
 
@@ -29,19 +30,19 @@ class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
         recyclerView.adapter = tweetAdapter
     }
 
-    private fun getTweetListData(): List<Tweet> {
+    private fun getTweetListData(): List<TweetData> {
         insertDataToDB()
         return getTweetDataFromDB()
     }
 
-    private fun getTweetDataFromDB(): List<Tweet> {
+    private fun getTweetDataFromDB(): List<TweetData> {
         val application = applicationContext as MyApplication
         val tweetDao = application.getTweetDao()
         return runBlocking {
             val tweets = tweetDao.getAll()
             val tweetDataList = tweetDao.getTweetDataList()
             Log.d("room数据库查询结果", "tweetData个数:${tweetDataList.size} tweetData第一个结果${tweetDataList.first()}")
-            tweets.filter { it.error == null && it.unknownError == null }
+            tweetDataList.filter { it.tweet.error == null && it.tweet.unknownError == null }
         }
     }
 
