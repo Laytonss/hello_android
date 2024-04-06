@@ -24,7 +24,6 @@ class TweetAdapter(private val tweetDataList: List<TweetData>) : RecyclerView.Ad
         }
     }
 
-    // Create new views (invoked by the layout manager)
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(viewGroup.context).inflate(R.layout.tweet_item_layout, viewGroup, false)
         return ViewHolder(view)
