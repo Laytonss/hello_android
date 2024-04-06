@@ -4,6 +4,9 @@ import android.app.Application
 import android.content.Context
 import android.util.Log
 import androidx.room.Room
+import com.thoughtworks.helloworld_view.room.dao.CommentDao
+import com.thoughtworks.helloworld_view.room.dao.ImageDao
+import com.thoughtworks.helloworld_view.room.dao.SenderDao
 import com.thoughtworks.helloworld_view.room.dao.TweetDao
 import com.thoughtworks.helloworld_view.room.dataBase.AppDatabase
 
@@ -27,5 +30,17 @@ class MyApplication : Application() {
 
     fun getTweetDao(): TweetDao {
         return database.tweetDao()
+    }
+
+    fun getSenderDao(): SenderDao {
+        return database.senderDao()
+    }
+
+    fun getImageDao(): ImageDao {
+        return database.imageDao()
+    }
+
+    fun getCommentDao(): CommentDao {
+        return database.commentDao()
     }
 }
