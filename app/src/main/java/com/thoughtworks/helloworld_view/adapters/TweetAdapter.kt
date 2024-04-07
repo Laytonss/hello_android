@@ -18,20 +18,13 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class TweetAdapter(private val tweetDataListFlow: Flow<List<TweetData>>) : RecyclerView.Adapter<TweetAdapter.ViewHolder>() {
+class TweetAdapter : RecyclerView.Adapter<TweetAdapter.ViewHolder>() {
 
-    private lateinit var tweetDataList: List<TweetData>
+    private var tweetDataList: List<TweetData> = emptyList()
 
-    init {
-        MainScope().launch(Dispatchers.IO) {
-            tweetDataListFlow.collectLatest {
-                Log.d("room", "flow里的值为 ${it}")
-                withContext(Dispatchers.Main) {
-                    tweetDataList = it
-                    notifyDataSetChanged()
-                }
-            }
-        }
+    fun setTweetDataList(tweetDataList: List<TweetData>) {
+        this.tweetDataList = tweetDataList
+        notifyDataSetChanged()
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -52,14 +45,12 @@ class TweetAdapter(private val tweetDataListFlow: Flow<List<TweetData>>) : Recyc
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        if (::tweetDataList.isInitialized && position < tweetDataList.size) {
-            viewHolder.imageView.load(R.drawable.avatar) {
-                transformations(CircleCropTransformation())
-            }
-            viewHolder.nameView.text = tweetDataList[position].sender?.userName
-            viewHolder.contentView.text = tweetDataList[position].tweet.content
+        viewHolder.imageView.load(R.drawable.avatar) {
+            transformations(CircleCropTransformation())
         }
+        viewHolder.nameView.text = tweetDataList[position].sender?.userName
+        viewHolder.contentView.text = tweetDataList[position].tweet.content
     }
 
-    override fun getItemCount() = if (::tweetDataList.isInitialized) tweetDataList.size else 0
+    override fun getItemCount() = tweetDataList.size
 }
