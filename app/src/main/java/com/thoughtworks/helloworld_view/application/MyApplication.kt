@@ -27,16 +27,4 @@ class MyApplication : Application() {
     fun getTweetDao(): TweetDao {
         return database.tweetDao()
     }
-
-    fun getSenderDao(): SenderDao {
-        return database.senderDao()
-    }
-
-    fun getImageDao(): ImageDao {
-        return database.imageDao()
-    }
-
-    fun getCommentDao(): CommentDao {
-        return database.commentDao()
-    }
 }

@@ -24,10 +24,15 @@ class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
         val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(this)
         val tweetAdapter = TweetAdapter()
-        val tweetDataListFlow = TweetDataSource(applicationContext as MyApplication).fetchTweets()
+
+        val dataSource = TweetDataSource(applicationContext as MyApplication)
+        dataSource.insertDataFromJsonFile()
+
+        val tweetDataListFlow = dataSource.fetchTweets()
         tweetDataListFlow.onEach {
             tweetAdapter.setTweetDataList(it)
         }.launchIn(lifecycleScope)
+
         recyclerView.adapter = tweetAdapter
     }
 }

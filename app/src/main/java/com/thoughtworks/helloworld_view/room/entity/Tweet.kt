@@ -1,5 +1,6 @@
 package com.thoughtworks.helloworld_view.room.entity
 
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
@@ -9,7 +10,7 @@ data class Tweet(
     @PrimaryKey val id: Int,
     val content: String? = null,
     val images: List<Image>? = null,
-    val sender: Sender? = null,
+    @Embedded val sender: Sender? = null,
     val comments: List<Comment>? = null,
     val error: String? = null,
     @SerializedName("unknown error")

@@ -12,5 +12,5 @@ interface TweetDao {
     fun getAll(): Flow<List<Tweet>>
 
     @Insert
-    fun insertALL(tweets: List<Tweet>)
+    suspend fun insertALL(tweets: List<Tweet>)
 }
