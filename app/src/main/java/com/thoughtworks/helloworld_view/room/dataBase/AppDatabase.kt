@@ -2,9 +2,6 @@ package com.thoughtworks.helloworld_view.room.dataBase
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.thoughtworks.helloworld_view.room.dao.CommentDao
-import com.thoughtworks.helloworld_view.room.dao.ImageDao
-import com.thoughtworks.helloworld_view.room.dao.SenderDao
 import com.thoughtworks.helloworld_view.room.dao.TweetDao
 import com.thoughtworks.helloworld_view.room.entity.Comment
 import com.thoughtworks.helloworld_view.room.entity.Image
@@ -22,10 +19,4 @@ import com.thoughtworks.helloworld_view.room.entity.Tweet
 )
 abstract class AppDatabase : RoomDatabase() {
     abstract fun tweetDao(): TweetDao
-
-    abstract fun senderDao(): SenderDao
-
-    abstract fun imageDao(): ImageDao
-
-    abstract fun commentDao(): CommentDao
 }

@@ -3,9 +3,6 @@ package com.thoughtworks.helloworld_view.application
 import android.app.Application
 import android.util.Log
 import androidx.room.Room
-import com.thoughtworks.helloworld_view.room.dao.CommentDao
-import com.thoughtworks.helloworld_view.room.dao.ImageDao
-import com.thoughtworks.helloworld_view.room.dao.SenderDao
 import com.thoughtworks.helloworld_view.room.dao.TweetDao
 import com.thoughtworks.helloworld_view.room.dataBase.AppDatabase
 

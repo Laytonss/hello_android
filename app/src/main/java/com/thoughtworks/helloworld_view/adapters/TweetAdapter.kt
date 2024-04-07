@@ -9,14 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.thoughtworks.helloworld_view.R
-import com.thoughtworks.helloworld_view.viewModel.TweetData
+import com.thoughtworks.helloworld_view.room.entity.Tweet
 
 
 class TweetAdapter : RecyclerView.Adapter<TweetAdapter.ViewHolder>() {
 
-    private var tweetDataList: List<TweetData> = emptyList()
+    private var tweetDataList: List<Tweet> = emptyList()
 
-    fun setTweetDataList(tweetDataList: List<TweetData>) {
+    fun setTweetDataList(tweetDataList: List<Tweet>) {
         this.tweetDataList = tweetDataList
         notifyDataSetChanged()
     }
@@ -43,7 +43,7 @@ class TweetAdapter : RecyclerView.Adapter<TweetAdapter.ViewHolder>() {
             transformations(CircleCropTransformation())
         }
         viewHolder.nameView.text = tweetDataList[position].sender?.userName
-        viewHolder.contentView.text = tweetDataList[position].tweet.content
+        viewHolder.contentView.text = tweetDataList[position].content
     }
 
     override fun getItemCount() = tweetDataList.size
