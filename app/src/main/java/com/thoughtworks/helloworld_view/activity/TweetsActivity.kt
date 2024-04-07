@@ -1,16 +1,16 @@
 package com.thoughtworks.helloworld_view.activity
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.thoughtworks.helloworld_view.R
 import com.thoughtworks.helloworld_view.adapters.TweetAdapter
 import com.thoughtworks.helloworld_view.application.MyApplication
 import com.thoughtworks.helloworld_view.room.dataSource.TweetDataSource
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import java.io.IOException
 
 
 class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
