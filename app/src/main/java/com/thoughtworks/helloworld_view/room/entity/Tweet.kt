@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName
 
 @Entity
 data class Tweet(
-    @PrimaryKey val id: Int,
+    @PrimaryKey(autoGenerate = true) val id: Int,
     val content: String? = null,
     val images: List<Image>? = null,
     @Embedded val sender: Sender? = null,

@@ -31,7 +31,8 @@ class TweetDataSource(private val application: MyApplication) {
 
     //用okHttp从network读数据
     private suspend fun getDataFromOkHttp(): List<Tweet> {
-        return gson.fromJson(OkHttpRequester().request(TWEET_URL), Array<Tweet>::class.java).toList()
+        val jsonFromNetwork = OkHttpRequester().request(TWEET_URL)
+        return gson.fromJson(jsonFromNetwork, Array<Tweet>::class.java).toList()
     }
 
     //从json文件读tweet数据
