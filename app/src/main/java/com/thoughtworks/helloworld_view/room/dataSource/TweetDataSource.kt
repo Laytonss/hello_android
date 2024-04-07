@@ -1,6 +1,5 @@
 package com.thoughtworks.helloworld_view.room.dataSource
 
-import android.content.res.Resources
 import android.util.Log
 import com.google.gson.Gson
 import com.thoughtworks.helloworld_view.R
@@ -20,14 +19,17 @@ class TweetDataSource(private val application: MyApplication) {
         return tweetDao.getAll()
     }
 
-    fun insertDataFromJsonFile() {
+    fun insertDataToDB() {
+        val tweetList = getDataFromLocalJsonFile()
+        MainScope().launch(Dispatchers.IO) {
+            tweetDao.insertALL(tweetList)
+        }
+    }
+
+    private fun getDataFromLocalJsonFile(): List<Tweet> {
         application.resources.openRawResource(R.raw.tweets).use { inputStream ->
             val json = inputStream.bufferedReader().readText()
-            val tweetList = gson.fromJson(json, Array<Tweet>::class.java).toList()
-            Log.d("room", "$tweetList")
-            MainScope().launch(Dispatchers.IO) {
-                tweetDao.insertALL(tweetList)
-            }
+            return gson.fromJson(json, Array<Tweet>::class.java).toList()
         }
     }
 }
