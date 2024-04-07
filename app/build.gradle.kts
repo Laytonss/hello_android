@@ -73,6 +73,8 @@ dependencies {
     implementation("androidx.room:room-rxjava2:2.6.1")
     // optional - RxJava3 support for Room
     implementation("androidx.room:room-rxjava3:2.6.1")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.okhttp3:okhttp-coroutines:5.0.0-alpha.11")
     kapt(libs.roomAnnotation)
     implementation(libs.coil)

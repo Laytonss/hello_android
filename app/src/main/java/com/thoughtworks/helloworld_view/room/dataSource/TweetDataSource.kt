@@ -4,6 +4,7 @@ import com.google.gson.Gson
 import com.thoughtworks.helloworld_view.R
 import com.thoughtworks.helloworld_view.application.MyApplication
 import com.thoughtworks.helloworld_view.okHttp.OkHttpRequester
+import com.thoughtworks.helloworld_view.retrofit.RetrofitClient
 import com.thoughtworks.helloworld_view.room.entity.Tweet
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
@@ -24,9 +25,15 @@ class TweetDataSource(private val application: MyApplication) {
     fun getAndInsertDataToDB() {
         //val tweetList = getDataFromLocalJsonFile()
         MainScope().launch(Dispatchers.IO) {
-            val tweetList = getDataFromOkHttp()
+            val tweetList = getDataFromRetrofit()
             tweetDao.insertALL(tweetList)
         }
+    }
+
+    //用okHttp从Retrofit读数据
+    private suspend fun getDataFromRetrofit(): List<Tweet> {
+        val jsonFromNetwork = RetrofitClient.apiService.getJsonFile()
+        return gson.fromJson(jsonFromNetwork, Array<Tweet>::class.java).toList()
     }
 
     //用okHttp从network读数据
