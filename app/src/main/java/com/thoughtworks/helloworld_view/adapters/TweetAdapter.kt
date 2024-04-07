@@ -1,6 +1,5 @@
 package com.thoughtworks.helloworld_view.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,12 +10,7 @@ import coil.load
 import coil.transform.CircleCropTransformation
 import com.thoughtworks.helloworld_view.R
 import com.thoughtworks.helloworld_view.viewModel.TweetData
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+
 
 class TweetAdapter : RecyclerView.Adapter<TweetAdapter.ViewHolder>() {
 

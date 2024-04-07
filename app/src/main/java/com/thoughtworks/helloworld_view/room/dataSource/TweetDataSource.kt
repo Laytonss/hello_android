@@ -11,7 +11,7 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
-class TweetDataSource(private val application: MyApplication) {
+class TweetDataSource(application: MyApplication) {
 
     private val tweetDao = application.getTweetDao()
     private val senderDao = application.getSenderDao()
