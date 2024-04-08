@@ -9,7 +9,6 @@ import com.thoughtworks.helloworld_view.retrofit.RetrofitClient
 import com.thoughtworks.helloworld_view.room.entity.Tweet
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
 
