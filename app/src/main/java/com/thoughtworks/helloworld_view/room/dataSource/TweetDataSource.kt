@@ -30,7 +30,7 @@ class TweetDataSource(private val application: MyApplication) {
         }
     }
 
-    //用okHttp从Retrofit读数据
+    //用Retrofit从network读数据
     private suspend fun getDataFromRetrofit(): List<Tweet> {
         val jsonFromNetwork = RetrofitClient.apiService.getJsonFile()
         return gson.fromJson(jsonFromNetwork, Array<Tweet>::class.java).toList()
