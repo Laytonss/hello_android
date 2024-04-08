@@ -18,5 +18,4 @@ import com.thoughtworks.helloworld_view.room.entity.Tweet
 @TypeConverters(TweetDataConverter::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun tweetDao(): TweetDao
-
 }

@@ -6,17 +6,20 @@ import com.thoughtworks.helloworld_view.R
 import com.thoughtworks.helloworld_view.application.MyApplication
 import com.thoughtworks.helloworld_view.okHttp.OkHttpRequester
 import com.thoughtworks.helloworld_view.retrofit.RetrofitClient
+import com.thoughtworks.helloworld_view.room.dao.TweetDao
 import com.thoughtworks.helloworld_view.room.entity.Tweet
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
 const val TWEET_URL = "https://raw.githubusercontent.com/TW-Android-Junior-Training/android_training_practice/main/json/tweets.json"
 
 class TweetDataSource(private val application: MyApplication) {
 
-    private val tweetDao = application.getTweetDao()
+    @Inject
+    private lateinit var tweetDao : TweetDao
     private val gson = Gson()
 
     fun fetchTweets(): LiveData<List<Tweet>> {
