@@ -1,5 +1,6 @@
 package com.thoughtworks.helloworld_view.dataSource
 
+import androidx.lifecycle.LiveData
 import com.google.gson.Gson
 import com.thoughtworks.helloworld_view.R
 import com.thoughtworks.helloworld_view.application.MyApplication
@@ -19,7 +20,7 @@ class TweetDataSource(private val application: MyApplication) {
     private val tweetDao = application.getTweetDao()
     private val gson = Gson()
 
-    fun fetchTweets(): Flow<List<Tweet>> {
+    fun fetchTweets(): LiveData<List<Tweet>> {
         return tweetDao.getAll()
     }
 
