@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.thoughtworks.helloworld_view.R
 import com.thoughtworks.helloworld_view.adapters.TweetAdapter
 import com.thoughtworks.helloworld_view.application.MyApplication
-import com.thoughtworks.helloworld_view.room.dataSource.TweetDataSource
+import com.thoughtworks.helloworld_view.dataSource.TweetDataSource
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import java.io.IOException

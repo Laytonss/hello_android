@@ -1,4 +1,4 @@
-package com.thoughtworks.helloworld_view.room.dataSource
+package com.thoughtworks.helloworld_view.dataSource
 
 import com.google.gson.Gson
 import com.thoughtworks.helloworld_view.R
