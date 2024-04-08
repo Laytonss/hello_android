@@ -67,25 +67,21 @@ android {
     }
 }
 
-kapt {
-    correctErrorTypes = true
-}
-
 dependencies {
     implementation(libs.room)
     implementation(libs.roomCoroutines)
-    // optional - RxJava2 support for Room
-    implementation("androidx.room:room-rxjava2:2.6.1")
-    // optional - RxJava3 support for Room
-    implementation("androidx.room:room-rxjava3:2.6.1")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.okhttp3:okhttp-coroutines:5.0.0-alpha.11")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
-    implementation("androidx.fragment:fragment-ktx:1.2.4")
-    implementation("com.google.dagger:hilt-android:2.44")
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
+    implementation(libs.roomForRxjava2)
+    implementation(libs.roomForRxjava3)
+    implementation(libs.retrofit)
     kapt(libs.roomAnnotation)
+
+    implementation(libs.retrofitConverter)
+    implementation(libs.okHttp)
+    implementation(libs.lifecycleViewmodel)
+    implementation(libs.fragmentKtx)
+    implementation(libs.hilt)
+    kapt(libs.hiltAndroidCompiler)
+
     implementation(libs.coil)
     implementation(libs.dataStore)
     implementation(libs.json)
@@ -97,4 +93,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+
+kapt {
+    correctErrorTypes = true
 }
