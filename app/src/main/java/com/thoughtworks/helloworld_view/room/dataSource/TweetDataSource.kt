@@ -11,6 +11,7 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
+
 const val TWEET_URL = "https://raw.githubusercontent.com/TW-Android-Junior-Training/android_training_practice/main/json/tweets.json"
 
 class TweetDataSource(private val application: MyApplication) {
@@ -32,8 +33,7 @@ class TweetDataSource(private val application: MyApplication) {
 
     //用Retrofit从network读数据
     private suspend fun getDataFromRetrofit(): List<Tweet> {
-        val jsonFromNetwork = RetrofitClient.apiService.getJsonFile()
-        return gson.fromJson(jsonFromNetwork, Array<Tweet>::class.java).toList()
+        return RetrofitClient.apiService.getJsonFile()
     }
 
     //用okHttp从network读数据
