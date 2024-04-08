@@ -4,6 +4,7 @@ import java.util.Properties
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("com.google.dagger.hilt.android")
     kotlin("kapt")
 }
 
@@ -66,6 +67,10 @@ android {
     }
 }
 
+kapt {
+    correctErrorTypes = true
+}
+
 dependencies {
     implementation(libs.room)
     implementation(libs.roomCoroutines)
@@ -78,6 +83,8 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp-coroutines:5.0.0-alpha.11")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
     implementation("androidx.fragment:fragment-ktx:1.2.4")
+    implementation("com.google.dagger:hilt-android:2.44")
+    kapt("com.google.dagger:hilt-android-compiler:2.44")
     kapt(libs.roomAnnotation)
     implementation(libs.coil)
     implementation(libs.dataStore)
