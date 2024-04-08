@@ -2,6 +2,7 @@ package com.thoughtworks.helloworld_view.activity
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -19,7 +20,7 @@ import java.io.IOException
 
 class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
 
-    private lateinit var tweetsViewModel: TweetsViewModel
+    private val tweetsViewModel: TweetsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +32,6 @@ class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
         recyclerView.layoutManager = LinearLayoutManager(this)
         val tweetAdapter = TweetAdapter()
         prepareTweetData()
-        tweetsViewModel = ViewModelProvider(this)[TweetsViewModel::class.java]
         tweetsViewModel.tweetsLiveData.observe(this) { tweets ->
             tweetAdapter.setTweetDataList(tweets)
         }

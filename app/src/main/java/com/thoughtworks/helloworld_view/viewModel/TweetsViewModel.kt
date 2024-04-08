@@ -1,13 +1,14 @@
 package com.thoughtworks.helloworld_view.viewModel
 
+import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModel
 import com.thoughtworks.helloworld_view.application.MyApplication
 import com.thoughtworks.helloworld_view.dataSource.TweetDataSource
 
-class TweetsViewModel(application: MyApplication) : AndroidViewModel(application) {
+class TweetsViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val tweetDataSource = TweetDataSource(application)
+    private val tweetDataSource = TweetDataSource(application as MyApplication)
 
     val tweetsLiveData = tweetDataSource.fetchTweets()
 }
