@@ -66,12 +66,12 @@ android {
         jvmTarget = "1.8"
     }
 
-    testOptions {
-        unitTests {
-            isIncludeAndroidResources = true
-            isReturnDefaultValues = true
-        }
-    }
+//    testOptions {
+//        unitTests {
+//            isIncludeAndroidResources = true
+//            isReturnDefaultValues = true
+//        }
+//    }
 }
 
 dependencies {
