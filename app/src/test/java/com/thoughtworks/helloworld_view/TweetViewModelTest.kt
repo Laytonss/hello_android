@@ -13,9 +13,7 @@ import org.junit.Test
 import org.junit.rules.TestRule
 
 import org.junit.runner.RunWith
-import org.mockito.InjectMocks
 import org.mockito.Mock
-import org.mockito.Mockito.mock
 import org.mockito.Mockito.`when`
 import org.mockito.junit.MockitoJUnitRunner
 
