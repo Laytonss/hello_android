@@ -9,24 +9,12 @@ import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
 class MyApplication : Application() {
-    private lateinit var database: AppDatabase
 
     override fun onCreate() {
         super.onCreate()
-        database = Room.databaseBuilder(
-            applicationContext,
-            AppDatabase::class.java,
-            "my-database"
-        ).build()
-        Log.d("room", "database init finish")
     }
 
     override fun onTerminate() {
         super.onTerminate()
-        database.close()
-    }
-
-    fun getTweetDao(): TweetDao {
-        return database.tweetDao()
     }
 }
