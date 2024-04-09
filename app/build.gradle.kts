@@ -65,6 +65,13 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+            isReturnDefaultValues = true
+        }
+    }
 }
 
 dependencies {
@@ -81,7 +88,6 @@ dependencies {
     implementation(libs.fragmentKtx)
     implementation(libs.hilt)
     kapt(libs.hiltAndroidCompiler)
-
     implementation(libs.coil)
     implementation(libs.dataStore)
     implementation(libs.json)
@@ -91,6 +97,7 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)
+    testImplementation(libs.mockito)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
