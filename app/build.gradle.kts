@@ -94,6 +94,7 @@ dependencies {
     testImplementation(libs.mockito)
     testImplementation(libs.mockitoInile)
     testImplementation (libs.coreTesting)
+    testImplementation(libs.robolectric)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
