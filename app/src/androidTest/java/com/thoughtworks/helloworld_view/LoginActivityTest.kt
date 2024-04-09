@@ -35,4 +35,10 @@ class LoginActivityTest {
         onView(withId(R.id.remember)).perform(click())
         onView(withId(R.id.remember)).check(matches(isChecked()))
     }
+
+    @Test
+    fun should_jump_to_login_page_when_click_() {
+        onView(withId(R.id.remember)).perform(click())
+        onView(withId(R.id.remember)).check(matches(isChecked()))
+    }
 }
