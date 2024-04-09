@@ -1,5 +1,6 @@
 package com.thoughtworks.helloworld_view.dataSource
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import com.google.gson.Gson
 import com.thoughtworks.helloworld_view.R
@@ -16,10 +17,11 @@ import javax.inject.Inject
 
 const val TWEET_URL = "https://raw.githubusercontent.com/TW-Android-Junior-Training/android_training_practice/main/json/tweets.json"
 
-class TweetDataSource(private val application: MyApplication) {
+class TweetDataSource @Inject constructor(
+    val context: Context,
+    val tweetDao: TweetDao
+) {
 
-    @Inject
-    private lateinit var tweetDao : TweetDao
     private val gson = Gson()
 
     fun fetchTweets(): LiveData<List<Tweet>> {
@@ -47,7 +49,7 @@ class TweetDataSource(private val application: MyApplication) {
 
     //从json文件读tweet数据
     private fun getDataFromLocalJsonFile(): List<Tweet> {
-        application.resources.openRawResource(R.raw.tweets).use { inputStream ->
+        context.resources.openRawResource(R.raw.tweets).use { inputStream ->
             val json = inputStream.bufferedReader().readText()
             return gson.fromJson(json, Array<Tweet>::class.java).toList()
         }

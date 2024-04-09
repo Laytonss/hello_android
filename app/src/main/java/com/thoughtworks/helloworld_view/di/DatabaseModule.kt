@@ -2,6 +2,7 @@ package com.thoughtworks.helloworld_view.di
 
 import android.content.Context
 import androidx.room.Room
+import com.thoughtworks.helloworld_view.dataSource.TweetDataSource
 import com.thoughtworks.helloworld_view.room.dao.TweetDao
 import com.thoughtworks.helloworld_view.room.dataBase.AppDatabase
 import dagger.Module
@@ -9,7 +10,6 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Inject
 import javax.inject.Singleton
 
 @Module
@@ -28,4 +28,7 @@ object DatabaseModule {
 
     @Provides
     fun provideTweetDao(database: AppDatabase): TweetDao = database.tweetDao()
+
+    @Provides
+    fun provideDataSource(@ApplicationContext context: Context, tweetDao: TweetDao): TweetDataSource = TweetDataSource(context, tweetDao)
 }

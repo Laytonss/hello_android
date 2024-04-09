@@ -11,10 +11,15 @@ import com.thoughtworks.helloworld_view.adapters.TweetAdapter
 import com.thoughtworks.helloworld_view.application.MyApplication
 import com.thoughtworks.helloworld_view.dataSource.TweetDataSource
 import com.thoughtworks.helloworld_view.viewModel.TweetsViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import java.io.IOException
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
+
+    @Inject
+    lateinit var dataSource: TweetDataSource
 
     private val tweetsViewModel: TweetsViewModel by viewModels()
 
@@ -35,7 +40,6 @@ class TweetsActivity : AppCompatActivity(R.layout.tweets_layout) {
     }
 
     private fun prepareTweetData() {
-        val dataSource = TweetDataSource(applicationContext as MyApplication)
         try {
             dataSource.getAndInsertDataToDB()
         } catch (e: IOException) {
