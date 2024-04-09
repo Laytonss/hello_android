@@ -18,8 +18,8 @@ import javax.inject.Inject
 const val TWEET_URL = "https://raw.githubusercontent.com/TW-Android-Junior-Training/android_training_practice/main/json/tweets.json"
 
 class TweetDataSource @Inject constructor(
-    val context: Context,
-    val tweetDao: TweetDao
+    private val context: Context,
+    private val tweetDao: TweetDao
 ) {
 
     private val gson = Gson()
