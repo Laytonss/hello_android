@@ -31,7 +31,7 @@ class LoginActivityTest {
     val activityRule = ActivityScenarioRule(LoginActivity::class.java)
 
     @Test
-    fun useAppContext() {
+    fun checkbox_should_check_when_click_checkbox() {
         onView(withId(R.id.remember)).perform(click())
         onView(withId(R.id.remember)).check(matches(isChecked()))
     }
