@@ -21,7 +21,7 @@ hiltVersion = "2.48"
 mockitoVersion = "3.11.2"
 mockitoInlineVersion = "2.8.47"
 coreTestingVersion = "2.1.0"
-robolectricVersion = "4.6.1"
+robolectricVersion = "4.12"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }

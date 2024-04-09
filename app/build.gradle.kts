@@ -66,6 +66,12 @@ android {
         jvmTarget = "1.8"
     }
 
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+//            isReturnDefaultValues = true
+        }
+    }
 }
 
 dependencies {
@@ -95,6 +101,7 @@ dependencies {
     testImplementation(libs.mockitoInile)
     testImplementation (libs.coreTesting)
     testImplementation(libs.robolectric)
+    testImplementation("androidx.test:core:1.4.0")
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
