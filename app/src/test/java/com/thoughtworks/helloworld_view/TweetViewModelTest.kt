@@ -1,5 +1,6 @@
 package com.thoughtworks.helloworld_view
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import com.thoughtworks.helloworld_view.dataSource.TweetDataSource
 import com.thoughtworks.helloworld_view.room.entity.Image
@@ -7,7 +8,9 @@ import com.thoughtworks.helloworld_view.room.entity.Sender
 import com.thoughtworks.helloworld_view.room.entity.Tweet
 import com.thoughtworks.helloworld_view.viewModel.TweetsViewModel
 import org.junit.Assert.assertEquals
+import org.junit.Rule
 import org.junit.Test
+import org.junit.rules.TestRule
 
 import org.junit.runner.RunWith
 import org.mockito.InjectMocks
@@ -28,8 +31,8 @@ class TweetViewModelTest {
     @Mock
     lateinit var mockTweetDataSource: TweetDataSource
 
-    @InjectMocks
-    lateinit var tweetsViewModel: TweetsViewModel
+    @get:Rule
+    var rule: TestRule = InstantTaskExecutorRule()
 
     @Test
     fun `should return same live data when mock fetchTweets method`() {
@@ -40,6 +43,7 @@ class TweetViewModelTest {
             )
         )
         `when`(mockTweetDataSource.fetchTweets()).thenReturn(mockTweetLiveDataList)
+        val tweetsViewModel = TweetsViewModel(mockTweetDataSource)
         assertEquals(mockTweetLiveDataList, tweetsViewModel.tweetsLiveData)
     }
 
