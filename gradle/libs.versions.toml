@@ -33,23 +33,23 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 json = { group = "com.google.code.gson", name = "gson", version.ref = "jsonVersion" }
-coil = {group = "io.coil-kt", name = "coil", version.ref = "coilVersion"}
-dataStore = {group = "androidx.datastore", name = "datastore-preferences", version.ref = "dataStoreVersion"}
-room = {group = "androidx.room", name = "room-runtime", version.ref = "roomVersion"}
-roomAnnotation = {group = "androidx.room", name = "room-compiler", version.ref = "roomVersion"}
-roomCoroutines = {group = "androidx.room", name = "room-ktx", version.ref = "roomVersion"}
-roomForRxjava2 =  {group = "androidx.room", name = "room-rxjava2", version.ref = "roomVersion"}
-roomForRxjava3 =  {group = "androidx.room", name = "room-rxjava3", version.ref = "roomVersion"}
-retrofitConverter =  {group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofitVerson"}
-retrofit = {group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofitVerson"}
-okHttp = {group = "com.squareup.okhttp3", name = "okhttp-coroutines", version.ref = "okHttpVersion"}
-lifecycleViewmodel = {group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelVersion"}
-fragmentKtx = {group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragmentKtxVersion"}
-hilt = {group = "com.google.dagger", name = "hilt-android", version.ref = "hiltVersion"}
-hiltAndroidCompiler = {group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hiltVersion"}
-mockito = {group = "org.mockito", name = "mockito-core", version.ref = "mockitoVersion"}
-mockitoInile = {group = "org.mockito", name = "mockito-inline", version.ref = "mockitoInlineVersion"}
-coreTesting = {group = "androidx.arch.core", name = "core-testing", version.ref = "coreTestingVersion"}
+coil = { group = "io.coil-kt", name = "coil", version.ref = "coilVersion" }
+dataStore = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "dataStoreVersion" }
+room = { group = "androidx.room", name = "room-runtime", version.ref = "roomVersion" }
+roomAnnotation = { group = "androidx.room", name = "room-compiler", version.ref = "roomVersion" }
+roomCoroutines = { group = "androidx.room", name = "room-ktx", version.ref = "roomVersion" }
+roomForRxjava2 = { group = "androidx.room", name = "room-rxjava2", version.ref = "roomVersion" }
+roomForRxjava3 = { group = "androidx.room", name = "room-rxjava3", version.ref = "roomVersion" }
+retrofitConverter = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofitVerson" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofitVerson" }
+okHttp = { group = "com.squareup.okhttp3", name = "okhttp-coroutines", version.ref = "okHttpVersion" }
+lifecycleViewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelVersion" }
+fragmentKtx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragmentKtxVersion" }
+hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "hiltVersion" }
+hiltAndroidCompiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hiltVersion" }
+mockito = { group = "org.mockito", name = "mockito-core", version.ref = "mockitoVersion" }
+mockitoInile = { group = "org.mockito", name = "mockito-inline", version.ref = "mockitoInlineVersion" }
+coreTesting = { group = "androidx.arch.core", name = "core-testing", version.ref = "coreTestingVersion" }
 robolectric = { group = "org.robolectric", name = "robolectric", version.ref = "robolectricVersion" }
 
 [plugins]
