@@ -1,8 +1,10 @@
 package com.thoughtworks.helloworld_view.activity
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -24,20 +26,43 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.thoughtworks.helloworld_view.R
 import com.thoughtworks.helloworld_view.activity.ui.theme.HelloWorld_viewTheme
+import com.thoughtworks.helloworld_view.dataSource.TweetDataSource
 import com.thoughtworks.helloworld_view.room.entity.Image
 import com.thoughtworks.helloworld_view.room.entity.Sender
 import com.thoughtworks.helloworld_view.room.entity.Tweet
+import com.thoughtworks.helloworld_view.viewModel.TweetsViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import java.io.IOException
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class ComposeActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var dataSource: TweetDataSource
+
+    private val tweetsViewModel: TweetsViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val tweetList = buildTweetList()
-        setContent {
-            HelloWorld_viewTheme {
-                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    Tweets(tweetList = tweetList)
+        prepareTweetData()
+        tweetsViewModel.tweetsLiveData.observe(this) { tweets ->
+            setContent {
+                HelloWorld_viewTheme {
+                    Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+                        Tweets(tweetList = tweets)
+                    }
                 }
             }
+        }
+    }
+
+    private fun prepareTweetData() {
+        try {
+            dataSource.getAndInsertDataToDB()
+        } catch (e: IOException) {
+            Toast.makeText(applicationContext, "network request fail", Toast.LENGTH_LONG).show()
         }
     }
 
