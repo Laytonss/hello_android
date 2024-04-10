@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private fun modifyComposeButton(button: Button) {
         button.text = resources.getString(R.string.compose_button)
         button.setOnClickListener {
-            startActivity(Intent(this, DataStoreActivity::class.java))
+            startActivity(Intent(this, ComposeActivity::class.java))
         }
     }
 
