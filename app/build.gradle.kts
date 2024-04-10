@@ -8,6 +8,12 @@ plugins {
     kotlin("kapt")
 }
 
+buildscript {
+    dependencies {
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.23")
+    }
+}
+
 android {
     namespace = "com.thoughtworks.helloworld_view"
     compileSdk = 34
@@ -67,6 +73,9 @@ android {
     }
     defaultConfig {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary = true
+        }
     }
 
     buildFeatures {
@@ -76,6 +85,11 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.11"
     }
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
 }
 
 dependencies {
@@ -84,6 +98,10 @@ dependencies {
     implementation(libs.roomForRxjava2)
     implementation(libs.roomForRxjava3)
     implementation(libs.retrofit)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
     kapt(libs.roomAnnotation)
 
     implementation(libs.retrofitConverter)
@@ -110,6 +128,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-intents:3.4.0")
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.23")
 
     //compose
     val composeBom = platform("androidx.compose:compose-bom:2024.04.00")

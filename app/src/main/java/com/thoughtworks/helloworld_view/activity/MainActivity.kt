@@ -47,7 +47,15 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         modifyThreadButton(buttons[5])
         modifySharePreferenceButton(buttons[6])
         modifyDataStoreButton(buttons[7])
+        modifyComposeButton(buttons[8])
         buttons.forEach { linearLayout.addView(it) }
+    }
+
+    private fun modifyComposeButton(button: Button) {
+        button.text = resources.getString(R.string.compose_button)
+        button.setOnClickListener {
+            startActivity(Intent(this, DataStoreActivity::class.java))
+        }
     }
 
     private fun modifyDataStoreButton(button: Button) {

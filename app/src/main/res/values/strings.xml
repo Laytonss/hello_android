@@ -8,6 +8,7 @@
     <string name="thread_button">thread</string>
     <string name="share_button">SharePreference</string>
     <string name="data_store_button">DataStore</string>
+    <string name="compose_button">compose</string>
     <string name="share_preference_key">com.thoughtworks.hello_android.shareFile</string>
     <string name="fragment_button">fragment</string>
     <string name="pick_button">pick_contact</string>
@@ -36,4 +37,5 @@
     <string name="ishintshownKey">isHintShown</string>
     <string name="SpHint2">欢迎您回来</string>
     <string name="SpHint1">提示信息：\n 点击：\"知道了\"不再显示</string>
+    <string name="title_activity_compose">ComposeActivity</string>
 </resources>

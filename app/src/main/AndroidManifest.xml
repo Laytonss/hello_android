@@ -17,12 +17,20 @@
         android:theme="@style/Theme.HelloWorld_view"
         tools:targetApi="31">
         <activity
+            android:name=".activity.ComposeActivity"
+            android:exported="false"
+            android:label="@string/title_activity_compose"
+            android:theme="@style/Theme.HelloWorld_view" />
+        <activity
             android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
+
                 <action android:name="android.intent.action.PICK" />
+
                 <data
                     android:host="com.android.contacts"
                     android:path="/contacts"
@@ -35,6 +43,7 @@
         <activity android:name=".activity.TweetsActivity" />
         <activity android:name=".activity.ThreadActivity" />
         <activity android:name=".activity.SharePreferenceActivity" />
-        <activity android:name=".activity.DataStoreActivity"/>
+        <activity android:name=".activity.DataStoreActivity" />
     </application>
+
 </manifest>
