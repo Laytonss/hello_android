@@ -101,19 +101,10 @@ private fun Tweets(
 
 @Composable
 fun TweetItem(modifier: Modifier = Modifier, tweet: Tweet) {
-    var showDialog by remember { mutableStateOf(false) }
-    val imageModel = ImageRequest.Builder(LocalContext.current)
-        .data(tweet.sender?.avatar)
-        .crossfade(true)
-        .build()
     Row(
         modifier = modifier.padding(start = 30.dp, top = 20.dp)
     ) {
-        Box(
-            modifier = modifier.clickable { showDialog = true }
-        ) {
-            AvatarImage(imageModel, 50)
-        }
+        AvatarImageWithDialog(tweet, modifier)
         Column(
             modifier = modifier
                 .weight(1f)
@@ -127,9 +118,23 @@ fun TweetItem(modifier: Modifier = Modifier, tweet: Tweet) {
                 text = "${tweet.content}",
             )
         }
-        if (showDialog) {
-            ImageDialog(imageModel) { showDialog = false }
-        }
+    }
+}
+
+@Composable
+fun AvatarImageWithDialog(tweet: Tweet, modifier: Modifier = Modifier) {
+    var showDialog by remember { mutableStateOf(false) }
+    val imageModel = ImageRequest.Builder(LocalContext.current)
+        .data(tweet.sender?.avatar)
+        .crossfade(true)
+        .build()
+    Box(
+        modifier = modifier.clickable { showDialog = true }
+    ) {
+        AvatarImage(imageModel, 50)
+    }
+    if (showDialog) {
+        ImageDialog(imageModel) { showDialog = false }
     }
 }
 
