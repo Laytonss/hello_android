@@ -10,6 +10,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -19,6 +20,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -48,6 +50,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.io.IOException
 import javax.inject.Inject
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.TextField
 
 @AndroidEntryPoint
 class ComposeActivity : ComponentActivity() {
@@ -114,9 +117,33 @@ fun TweetItem(modifier: Modifier = Modifier, tweet: Tweet) {
                 text = "${tweet.sender?.userName ?: tweet.sender?.nick}",
                 fontWeight = FontWeight.Bold
             )
-            Text(
-                text = "${tweet.content}",
-            )
+            ContentWithEdit(tweet)
+        }
+    }
+}
+
+@Composable
+fun ContentWithEdit(tweet: Tweet, modifier: Modifier = Modifier) {
+    var contentText by remember { mutableStateOf(tweet.content!!) }
+    var editingText by remember { mutableStateOf(tweet.content!!) }
+    var isEdit by remember { mutableStateOf(false) }
+    Text(
+        text = contentText,
+        modifier = modifier.clickable { isEdit = true }
+    )
+    if (isEdit) {
+        TextField(
+            value = editingText,
+            onValueChange = { editingText = it }
+        )
+        Row {
+            Button(onClick = { contentText = editingText; isEdit = false }) {
+                Text("Save")
+            }
+            Spacer(modifier = Modifier.width(8.dp))
+            Button(onClick = { editingText = contentText; isEdit = false }) {
+                Text("Cancel")
+            }
         }
     }
 }
