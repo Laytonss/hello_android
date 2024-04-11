@@ -11,13 +11,14 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
@@ -28,7 +29,6 @@ import com.thoughtworks.helloworld_view.R
 import com.thoughtworks.helloworld_view.activity.ui.theme.HelloWorld_viewTheme
 import com.thoughtworks.helloworld_view.dataSource.TweetDataSource
 import com.thoughtworks.helloworld_view.room.entity.Image
-import com.thoughtworks.helloworld_view.room.entity.Sender
 import com.thoughtworks.helloworld_view.room.entity.Tweet
 import com.thoughtworks.helloworld_view.viewModel.TweetsViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -45,14 +45,11 @@ class ComposeActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val tweetList = buildTweetList()
         prepareTweetData()
-        tweetsViewModel.tweetsLiveData.observe(this) { tweets ->
-            setContent {
-                HelloWorld_viewTheme {
-                    Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                        Tweets(tweetList = tweets)
-                    }
+        setContent {
+            HelloWorld_viewTheme {
+                Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+                    Tweets(tweetsViewModel)
                 }
             }
         }
@@ -65,31 +62,16 @@ class ComposeActivity : ComponentActivity() {
             Toast.makeText(applicationContext, "network request fail", Toast.LENGTH_LONG).show()
         }
     }
-
-    private fun buildTweetList(): List<Tweet> {
-        return arrayListOf(
-            Tweet(1, "content1", arrayListOf(Image("url")), Sender("username", "nickname", "avatar")),
-            Tweet(2, "content2", arrayListOf(Image("url")), Sender("username", "nickname", "avatar")),
-            Tweet(3, "content3".repeat(30), arrayListOf(Image("url")), Sender("username", "nickname", "avatar")),
-            Tweet(4, "content4", arrayListOf(Image("url")), Sender("username", "nickname", "avatar")),
-            Tweet(4, "content4", arrayListOf(Image("url")), Sender("username", "nickname", "avatar")),
-            Tweet(4, "content4", arrayListOf(Image("url")), Sender("username", "nickname", "avatar")),
-            Tweet(4, "content4", arrayListOf(Image("url")), Sender("username", "nickname", "avatar")),
-            Tweet(4, "content4", arrayListOf(Image("url")), Sender("username", "nickname", "avatar")),
-            Tweet(4, "content4", arrayListOf(Image("url")), Sender("username", "nickname", "avatar")),
-            Tweet(4, "content4", arrayListOf(Image("url")), Sender("username", "nickname", "avatar")),
-            Tweet(4, "content4", arrayListOf(Image("url")), Sender("username", "nickname", "avatar")),
-        )
-    }
 }
 
 @Composable
 private fun Tweets(
+    tweetsViewModel: TweetsViewModel,
     modifier: Modifier = Modifier,
-    tweetList: List<Tweet>,
 ) {
+    val tweets by tweetsViewModel.tweetsLiveData.observeAsState(initial = emptyList())
     LazyColumn(modifier = modifier.padding(vertical = 4.dp)) {
-        items(items = tweetList) { tweet ->
+        items(items = tweets) { tweet ->
             TweetItem(tweet = tweet)
         }
         item {
