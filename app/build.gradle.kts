@@ -147,6 +147,7 @@ dependencies {
     //material
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.runtime:runtime-livedata")
+    implementation("io.coil-kt:coil-compose:2.4.0")
 }
 
 kapt {

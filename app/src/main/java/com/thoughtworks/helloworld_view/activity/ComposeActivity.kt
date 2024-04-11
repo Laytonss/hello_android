@@ -11,8 +11,10 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -20,11 +22,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.thoughtworks.helloworld_view.R
 import com.thoughtworks.helloworld_view.activity.ui.theme.HelloWorld_viewTheme
 import com.thoughtworks.helloworld_view.dataSource.TweetDataSource
@@ -90,10 +98,7 @@ fun TweetItem(modifier: Modifier = Modifier, tweet: Tweet) {
     Row(
         modifier = modifier.padding(start = 30.dp, top = 20.dp)
     ) {
-        Image(
-            painter = painterResource(id = R.drawable.avatar),
-            contentDescription = null,
-        )
+        AvatarImage(tweet.sender?.avatar)
         Column(
             modifier = modifier
                 .weight(1f)
@@ -108,6 +113,19 @@ fun TweetItem(modifier: Modifier = Modifier, tweet: Tweet) {
             )
         }
     }
+}
+
+@Composable
+fun AvatarImage(url: String?, modifier: Modifier = Modifier) {
+    AsyncImage(
+        model = ImageRequest.Builder(LocalContext.current)
+            .data(url)
+            .crossfade(true)
+            .build(),
+        contentDescription = null,
+        contentScale = ContentScale.Crop,
+        modifier = Modifier.clip(CircleShape).width(50.dp)
+    )
 }
 
 @Preview(showBackground = true)
