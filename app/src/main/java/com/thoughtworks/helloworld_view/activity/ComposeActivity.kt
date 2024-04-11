@@ -49,7 +49,6 @@ import com.thoughtworks.helloworld_view.viewModel.TweetsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.IOException
 import javax.inject.Inject
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.TextField
 
 @AndroidEntryPoint
@@ -171,7 +170,7 @@ fun AvatarImage(imageModel: ImageRequest, width: Int, modifier: Modifier = Modif
         model = imageModel,
         contentDescription = null,
         contentScale = ContentScale.Crop,
-        modifier = Modifier
+        modifier = modifier
             .clip(CircleShape)
             .width(width.dp)
     )
