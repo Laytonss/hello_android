@@ -1,6 +1,7 @@
 package com.thoughtworks.helloworld_view.viewModel
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.map
 import com.thoughtworks.helloworld_view.dataSource.TweetDataSource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -9,5 +10,9 @@ import javax.inject.Inject
 class TweetsViewModel @Inject constructor(
     tweetDataSource: TweetDataSource
 ) : ViewModel() {
-    val tweetsLiveData = tweetDataSource.fetchTweets()
+    val tweetsLiveData = tweetDataSource.fetchTweets().map { tweets ->
+        tweets.filter {
+            it.error == null && it.unknownError == null && it.content != null
+        }
+    }
 }

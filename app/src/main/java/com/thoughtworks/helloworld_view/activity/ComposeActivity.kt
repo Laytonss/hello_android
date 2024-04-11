@@ -100,7 +100,7 @@ fun TweetItem(modifier: Modifier = Modifier, tweet: Tweet) {
                 .padding(start = 20.dp)
         ) {
             Text(
-                text = "${tweet.sender?.userName}",
+                text = "${tweet.sender?.userName ?: tweet.sender?.nick}",
                 fontWeight = FontWeight.Bold
             )
             Text(
